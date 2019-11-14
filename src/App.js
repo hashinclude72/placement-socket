@@ -8,6 +8,7 @@ import { Login } from "./components/login";
 import { AddCompany } from "./components/addCompany";
 import { CompanyTab } from "./components/companyTab";
 import { CompanyDetails } from "./components/companyDetails";
+import { CompanyList } from "./components/companyList";
 
 function App() {
   return (
@@ -27,11 +28,12 @@ function App() {
           Learn React
         </a>
       </header> */}
-      {/* <AddCompany/> */}
+      <AddCompany/>
       {/* <Login/> */}
       {/* <RegisterUser/> */}
-      <CompanyDetails/>
-      <CompanyTab/>
+      {/* <CompanyDetails/> */}
+      {/* <CompanyTab/> */}
+      <CompanyList/>
       <Footer/>
     </div>
   );

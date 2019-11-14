@@ -39,7 +39,15 @@ functions:
         - http:
             path: addCompany
             method: post
-            cors: true          
+            cors: true
+            
+  getCompany:
+    handler: src/getCompany.get
+    events:
+      - http:
+          path: getCompany/{id}
+          method: get
+          cors: true
 
 resources:
   Resources:
