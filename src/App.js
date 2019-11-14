@@ -6,6 +6,8 @@ import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Login } from "./components/login";
 import { AddCompany } from "./components/addCompany";
+import { CompanyTab } from "./components/companyTab";
+import { CompanyDetails } from "./components/companyDetails";
 
 function App() {
   return (
@@ -25,9 +27,11 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <AddCompany/>
+      {/* <AddCompany/> */}
       {/* <Login/> */}
       {/* <RegisterUser/> */}
+      <CompanyDetails/>
+      <CompanyTab/>
       <Footer/>
     </div>
   );
