@@ -58,6 +58,12 @@
         "LogGroupName": "/aws/lambda/placement-socket-dev-registerStudent"
       }
     },
+    "AddCompanyLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/placement-socket-dev-addCompany"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -155,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1573731000147-2019-11-14T11:30:00.147Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1573765151814-2019-11-14T20:59:11.814Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-registerStudent",
         "Handler": "src/registerStudent.register",
@@ -170,7 +176,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "DYNAMODB_TABLE": "PlacementSocketStudents"
+            "DYNAMODB_TABLE": "PlacementSocketStudents",
+            "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
           }
         }
       },
@@ -179,14 +186,56 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "RegisterStudentLambdaVersionZkp797WMghpJBhvm1uz3PLFenA4nZ5KqI0JM83nzATw": {
+    "RegisterStudentLambdaVersionj7QKBZdwoFEinkTPXjS8w8UdjVoLenu99URUJesGI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterStudentLambdaFunction"
         },
-        "CodeSha256": "bEMVCkbiWSJkQXhtw5TfgQPRpH+/dNPqjh4msYFXp6k="
+        "CodeSha256": "3/0cRfk4JpQDTZ6fWk9SqKZinZ7JlBq6V0thizSeTwQ="
+      }
+    },
+    "AddCompanyLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/placement-socket/dev/1573765151814-2019-11-14T20:59:11.814Z/placement-socket.zip"
+        },
+        "FunctionName": "placement-socket-dev-addCompany",
+        "Handler": "src/addCompany.add",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_TABLE": "PlacementSocketStudents",
+            "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
+          }
+        }
+      },
+      "DependsOn": [
+        "AddCompanyLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "AddCompanyLambdaVersionzQP3MDJCfYmfB1dupGkACaPPvAz6TTNYICbqoaxm3k": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AddCompanyLambdaFunction"
+        },
+        "CodeSha256": "3/0cRfk4JpQDTZ6fWk9SqKZinZ7JlBq6V0thizSeTwQ="
       }
     },
     "ApiGatewayRestApi": {
@@ -210,6 +259,21 @@
           ]
         },
         "PathPart": "registerStudent",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceAddcompany": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "addCompany",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -262,6 +326,53 @@
         }
       }
     },
+    "ApiGatewayMethodAddcompanyOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                "method.response.header.Access-Control-Allow-Credentials": "'false'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceAddcompany"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
     "ApiGatewayMethodRegisterstudentPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -305,7 +416,50 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1573730996571": {
+    "ApiGatewayMethodAddcompanyPost": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceAddcompany"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "AddCompanyLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayDeployment1573765148110": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -315,7 +469,9 @@
       },
       "DependsOn": [
         "ApiGatewayMethodRegisterstudentOptions",
-        "ApiGatewayMethodRegisterstudentPost"
+        "ApiGatewayMethodAddcompanyOptions",
+        "ApiGatewayMethodRegisterstudentPost",
+        "ApiGatewayMethodAddcompanyPost"
       ]
     },
     "RegisterStudentLambdaPermissionApiGateway": {
@@ -324,6 +480,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "RegisterStudentLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "AddCompanyLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AddCompanyLambdaFunction",
             "Arn"
           ]
         },
@@ -377,6 +570,29 @@
         },
         "TableName": "PlacementSocketStudents"
       }
+    },
+    "PlacementSocketCompaniesDynamoDbTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 1,
+          "WriteCapacityUnits": 1
+        },
+        "TableName": "PlacementSocketCompanies"
+      }
     }
   },
   "Outputs": {
@@ -388,7 +604,13 @@
     "RegisterStudentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterStudentLambdaVersionZkp797WMghpJBhvm1uz3PLFenA4nZ5KqI0JM83nzATw"
+        "Ref": "RegisterStudentLambdaVersionj7QKBZdwoFEinkTPXjS8w8UdjVoLenu99URUJesGI"
+      }
+    },
+    "AddCompanyLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "AddCompanyLambdaVersionzQP3MDJCfYmfB1dupGkACaPPvAz6TTNYICbqoaxm3k"
       }
     },
     "ServiceEndpoint": {

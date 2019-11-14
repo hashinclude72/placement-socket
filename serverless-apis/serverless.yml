@@ -11,6 +11,7 @@ provider:
   profile: tanmay
   environment:
     DYNAMODB_TABLE: 'PlacementSocketStudents'
+    DYNAMODB_TABLE_COMPANY: 'PlacementSocketCompanies'
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -32,6 +33,14 @@ functions:
           method: post
           cors: true
 
+  addCompany:
+      handler: src/addCompany.add
+      events:
+        - http:
+            path: addCompany
+            method: post
+            cors: true          
+
 resources:
   Resources:
 
@@ -49,3 +58,17 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
+    PlacementSocketCompaniesDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_COMPANY}
