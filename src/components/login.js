@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export class Login extends React.Component {
     constructor(props) {
@@ -54,6 +55,10 @@ export class Login extends React.Component {
                     </div>
                     <div className="form-group">
                         <input type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Login" onClick={this.login_user} />
+
+                        <Link to="/register-user">
+                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Register" />
+                        </Link>
                     </div>
 
                 </div>

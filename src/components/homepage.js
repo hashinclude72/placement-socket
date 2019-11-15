@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Route } from "react-router-dom";
+
 import { RegisterUser } from "./registerUser";
 import { Footer } from "./footer";
 import { Header } from "./header";
@@ -57,11 +59,14 @@ export class Homepage extends React.Component {
     render() {
         return (
             <div>
-                <Header username={this.state.loggedUser.sapid}/>
+                <Header username={this.state.loggedUser.id}/>
                 {/* <AddCompany/> */}
+
                 {
                     !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard /> : <AdminDashboard />)
                 }
+
+                <Route exact path="/register-user" component={RegisterUser} />
                 {/* <Login checkLogin={this.checkLogin}/> */}
                 {/* <StudentDashboard/> */}
                 {/* <RegisterUser/> */}

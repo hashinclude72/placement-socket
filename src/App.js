@@ -1,5 +1,7 @@
 import React from 'react';
-// import logo from './logo.svg';
+import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import './App.css';
 import { RegisterUser } from "./components/registerUser";
 import { Footer } from "./components/footer";
@@ -29,7 +31,14 @@ function App() {
         </a>
       </header> */}
       {/* <AddCompany/> */}
-      <Homepage/>
+      <BrowserRouter>
+
+
+        <Homepage />
+
+
+      </BrowserRouter>
+      
       {/* <RegisterUser/> */}
       {/* <CompanyDetails/> */}
       {/* <CompanyTab/> */}
