@@ -63,7 +63,7 @@ export class Homepage extends React.Component {
                 {/* <AddCompany/> */}
 
                 {
-                    !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard /> : <AdminDashboard />)
+                    !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
                 }
 
                 <Route exact path="/register-user" component={RegisterUser} />

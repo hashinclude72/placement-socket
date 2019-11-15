@@ -71,21 +71,21 @@ export class CompanyList extends React.Component {
                     this.state.resdata.map((option) => <CompanyTab key={option.id} optionText={option} handleCompanyClicked={this.handleCompanyClicked}/>)
                 }
                 {/* modal */}
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                <div className="modal fade" id="companyModal" role="dialog">
+                    <div className="modal-dialog">
 
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                {/* <h4 class="modal-title">Modal Header</h4> */}
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 {/* ------------- */}
                                 <CompanyDetails optionText={company} />
                                 {/* ------------ */}
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
 

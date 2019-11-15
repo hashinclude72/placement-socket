@@ -27,7 +27,9 @@ export class StudentList extends React.Component {
 
         this.fetch_from_dynamo('all').then(data => {
             console.log('fetch_all_Students :', data)
-            this.setState({ resdata: data })
+            this.setState({ 
+                resdata: data
+             })
         })
     }
 
@@ -40,7 +42,7 @@ export class StudentList extends React.Component {
             crossDomain: true,
             responseType: 'json', // important
         }).then((response) => {
-            // console.log('fetch_from_dynamo :', response.data)
+            console.log('fetch_from_dynamo :', response.data)
             return response.data;
 
         });
@@ -81,20 +83,20 @@ export class StudentList extends React.Component {
                     this.state.resdata.map((option) => <StudentTab key={option.id} optionText={option} handlestudentClicked={this.handlestudentClicked} />)
                 }
                 {/* modal */}
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                <div className="modal fade" id="studentModal" role="dialog">
+                    <div className="modal-dialog">
 
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                {/* <h4 class="modal-title">Modal Header</h4> */}
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 {/* ------------- */}
-                                <StudentDetails optionText={student} />
+                                <StudentDetails key={student.id} optionText={student} />
                                 {/* ------------ */}
                             </div>
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
                             </div>
                         </div>

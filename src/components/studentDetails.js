@@ -53,11 +53,11 @@ export class StudentDetails extends React.Component {
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Email : </h6>
-                        <input type="text" id="email" className="form-control pb_height-50 reverse" value={this.props.optionText.email} disabled />
+                        <input type="text" id="email" className="form-control pb_height-50 reverse" value={this.props.optionText.email || ''} disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Mobile no. : </h6>
-                        <input type="text" id="email" className="form-control pb_height-50 reverse" value={this.props.optionText.mobile} disabled />
+                        <input type="text" id="email2" className="form-control pb_height-50 reverse" value={this.props.optionText.mobile} disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">SAP ID : </h6>

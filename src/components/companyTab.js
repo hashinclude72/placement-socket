@@ -26,7 +26,7 @@ export class CompanyTab extends React.Component {
         return (
             <div className="container">
                 <div className="col-lg-11 col-md- col-sm-11" style={{ border: '3px solid black' }}>
-                    <a href="#" data-toggle="modal" data-target="#myModal" onClick={this.handleCompanyClicked}>
+                    <a href="#" data-toggle="modal" data-target="#companyModal" onClick={this.handleCompanyClicked}>
                         <div className="media d-block pb_feature-v1 text-left">
                             <div className="pb_icon"><i className="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
                             <div className="media-body">
