@@ -6,6 +6,13 @@ export class Header extends React.Component {
         this.state = {
 
         };
+        this.logoutUser = this.logoutUser.bind(this);
+    }
+
+    logoutUser(){
+        console.log("Logout");
+        localStorage.removeItem("loggedUser");
+        localStorage.clear();
     }
     render() {
         return (
@@ -22,7 +29,8 @@ export class Header extends React.Component {
                             <li className="nav-item"><a className="nav-link" href="#section-reviews">Reviews</a></li>
                             <li className="nav-item"><a className="nav-link" href="#section-pricing">Pricing</a></li>
                             <li className="nav-item"><a className="nav-link" href="#section-faq">FAQ</a></li>
-                            <li className="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a className="nav-link" href="https://uicookies.com/" target="_blank"><span className="pb_rounded-4 px-4">{this.props.username}</span></a></li>
+                            <li className="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a className="nav-link" href="#" target="_blank"><span className="pb_rounded-4 px-4">{this.props.username}</span></a></li>
+                            <li className=" nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0 error"><a className="nav-link" href="#" target="_blank" onclick={this.logoutUser}><span className="pb_rounded-4 px-4 error">Logout</span></a></li>
                         </ul>
                     </div>
                 </div>

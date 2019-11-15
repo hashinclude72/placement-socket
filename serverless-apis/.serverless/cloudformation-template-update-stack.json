@@ -76,6 +76,12 @@
         "LogGroupName": "/aws/lambda/placement-socket-dev-loginUser"
       }
     },
+    "GetStudentLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/placement-socket-dev-getStudent"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -173,7 +179,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1573779806116-2019-11-15T01:03:26.116Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-registerStudent",
         "Handler": "src/registerStudent.register",
@@ -198,14 +204,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "RegisterStudentLambdaVersionBj4YmydEmQheH7PQQNGLndJEb8b3B5WSDLm52EzGRg": {
+    "RegisterStudentLambdaVersionuCPR0Fo32cV7qnE8rS7fNgpPiac86dyjat1nL8kk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterStudentLambdaFunction"
         },
-        "CodeSha256": "pttIaM7iwerS0WBRbGq5Q4gJvGcQZk+i4rU2ZFl+/pA="
+        "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
       }
     },
     "AddCompanyLambdaFunction": {
@@ -215,7 +221,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1573779806116-2019-11-15T01:03:26.116Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-addCompany",
         "Handler": "src/addCompany.add",
@@ -240,14 +246,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AddCompanyLambdaVersionMUcld0JOXQCI9MOLUkjN6lIpJ6RRnHVGKlIlGxice8M": {
+    "AddCompanyLambdaVersionTY0gzUCGdg9xk751mZl1CQJcELWiCAbiKxNAdg1Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AddCompanyLambdaFunction"
         },
-        "CodeSha256": "pttIaM7iwerS0WBRbGq5Q4gJvGcQZk+i4rU2ZFl+/pA="
+        "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
       }
     },
     "GetCompanyLambdaFunction": {
@@ -257,7 +263,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1573779806116-2019-11-15T01:03:26.116Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-getCompany",
         "Handler": "src/getCompany.get",
@@ -282,14 +288,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetCompanyLambdaVersionuy1uWuj7SrvdXrJaQ0Q2swwkg8ZxMLmFfbCQsozk": {
+    "GetCompanyLambdaVersionEFiH9w5L9eJhxTgczLU3pqXOI1GbMPZ2SptF4sZeGY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetCompanyLambdaFunction"
         },
-        "CodeSha256": "pttIaM7iwerS0WBRbGq5Q4gJvGcQZk+i4rU2ZFl+/pA="
+        "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
       }
     },
     "LoginUserLambdaFunction": {
@@ -299,7 +305,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1573779806116-2019-11-15T01:03:26.116Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-loginUser",
         "Handler": "src/loginUser.login",
@@ -324,14 +330,56 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "LoginUserLambdaVersionLldMA3704jdHWVZ7heFNYbrvZFjz2jkgBsBIsDxms": {
+    "LoginUserLambdaVersionokOWRYakHrNJaZ4kV8ML3IFXtYrjo24GO0EVihWVpc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginUserLambdaFunction"
         },
-        "CodeSha256": "pttIaM7iwerS0WBRbGq5Q4gJvGcQZk+i4rU2ZFl+/pA="
+        "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
+      }
+    },
+    "GetStudentLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
+        },
+        "FunctionName": "placement-socket-dev-getStudent",
+        "Handler": "src/getStudent.get",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_TABLE": "PlacementSocketStudents",
+            "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
+          }
+        }
+      },
+      "DependsOn": [
+        "GetStudentLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "GetStudentLambdaVersionbvXR5SvyGpLQMMKNHEQGUGqhGqVfeUU9iNtCzXKbCk": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetStudentLambdaFunction"
+        },
+        "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
       }
     },
     "ApiGatewayRestApi": {
@@ -412,6 +460,33 @@
           ]
         },
         "PathPart": "loginUser",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceGetstudent": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "getStudent",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceGetstudentIdVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceGetstudent"
+        },
+        "PathPart": "{id}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -605,6 +680,53 @@
         }
       }
     },
+    "ApiGatewayMethodGetstudentIdVarOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'",
+                "method.response.header.Access-Control-Allow-Credentials": "'false'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetstudentIdVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
     "ApiGatewayMethodRegisterstudentPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -777,7 +899,50 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1573779801625": {
+    "ApiGatewayMethodGetstudentIdVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceGetstudentIdVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetStudentLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayDeployment1573802396010": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -790,10 +955,12 @@
         "ApiGatewayMethodAddcompanyOptions",
         "ApiGatewayMethodGetcompanyIdVarOptions",
         "ApiGatewayMethodLoginuserOptions",
+        "ApiGatewayMethodGetstudentIdVarOptions",
         "ApiGatewayMethodRegisterstudentPost",
         "ApiGatewayMethodAddcompanyPost",
         "ApiGatewayMethodGetcompanyIdVarGet",
-        "ApiGatewayMethodLoginuserPost"
+        "ApiGatewayMethodLoginuserPost",
+        "ApiGatewayMethodGetstudentIdVarGet"
       ]
     },
     "RegisterStudentLambdaPermissionApiGateway": {
@@ -944,6 +1111,43 @@
         }
       }
     },
+    "GetStudentLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetStudentLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
     "PlacementSocketDynamoDbTable": {
       "Type": "AWS::DynamoDB::Table",
       "DeletionPolicy": "Retain",
@@ -1000,25 +1204,31 @@
     "RegisterStudentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterStudentLambdaVersionBj4YmydEmQheH7PQQNGLndJEb8b3B5WSDLm52EzGRg"
+        "Ref": "RegisterStudentLambdaVersionuCPR0Fo32cV7qnE8rS7fNgpPiac86dyjat1nL8kk"
       }
     },
     "AddCompanyLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AddCompanyLambdaVersionMUcld0JOXQCI9MOLUkjN6lIpJ6RRnHVGKlIlGxice8M"
+        "Ref": "AddCompanyLambdaVersionTY0gzUCGdg9xk751mZl1CQJcELWiCAbiKxNAdg1Y"
       }
     },
     "GetCompanyLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetCompanyLambdaVersionuy1uWuj7SrvdXrJaQ0Q2swwkg8ZxMLmFfbCQsozk"
+        "Ref": "GetCompanyLambdaVersionEFiH9w5L9eJhxTgczLU3pqXOI1GbMPZ2SptF4sZeGY"
       }
     },
     "LoginUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginUserLambdaVersionLldMA3704jdHWVZ7heFNYbrvZFjz2jkgBsBIsDxms"
+        "Ref": "LoginUserLambdaVersionokOWRYakHrNJaZ4kV8ML3IFXtYrjo24GO0EVihWVpc"
+      }
+    },
+    "GetStudentLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetStudentLambdaVersionbvXR5SvyGpLQMMKNHEQGUGqhGqVfeUU9iNtCzXKbCk"
       }
     },
     "ServiceEndpoint": {

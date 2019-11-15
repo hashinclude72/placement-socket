@@ -57,6 +57,14 @@ functions:
           method: post
           cors: true
 
+  getStudent:
+    handler: src/getStudent.get
+    events:
+      - http:
+          path: getStudent/{id}
+          method: get
+          cors: true
+
 resources:
   Resources:
 

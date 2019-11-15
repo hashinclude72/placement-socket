@@ -23,9 +23,10 @@ export class Footer extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col text-center">
-                            <p className="pb_font-14">&copy; 2019. All Rights Reserved. <br /> <a
-                                href="https://uicookies.com/bootstrap-html-templates/">Bootstrap Templates</a> by uiCookies</p>
-                            <p className="pb_font-14">Demo Images: <a href="https://unsplash.com/" target="_blank" rel="nofollow">Unsplash</a>
+                            <p className="pb_font-14">&copy; 2019. All Rights Reserved. <br /> 
+                            {/* <a
+                                href="https://uicookies.com/bootstrap-html-templates/">Bootstrap Templates</a> by uiCookies</p> */}
+                            {/* <p className="pb_font-14">Demo Images: <a href="https://unsplash.com/" target="_blank" rel="nofollow">Unsplash</a> */}
                             </p>
                         </div>
                     </div>

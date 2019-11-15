@@ -20,6 +20,9 @@ export class Login extends React.Component {
             password: password,
         }
 
+        console.log("login sent data", data);
+        
+
         axios({
             url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/loginUser',
             method: 'POST',
@@ -35,6 +38,9 @@ export class Login extends React.Component {
                         loginUser: response.data,
                     };
                 });
+            }else{
+                console.log("no pass match");
+                
             }
 
         });

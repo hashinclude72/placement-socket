@@ -1,31 +1,32 @@
 import React from 'react';
 import axios from 'axios';
-import { CompanyTab } from "./companyTab";
-import { CompanyDetails } from "./companyDetails";
+import { StudentTab } from "./studentTab";
+import { StudentDetails } from "./studentDetails";
 
-export class CompanyList extends React.Component {
+export class StudentList extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             resdata: [],
             clickId: "",
-            company:"",
+            student: "",
 
         };
-        this.handleCompanyClicked = this.handleCompanyClicked.bind(this);
+        this.handlestudentClicked = this.handlestudentClicked.bind(this);
+        this.closeStudentDetail = this.closeStudentDetail.bind(this);
 
     }
 
     componentDidMount() {
-        this.fetch_all_Companies()
+        this.fetch_all_Students()
     }
 
-    fetch_all_Companies() {
+    fetch_all_Students() {
         //fetch all acts from aws DynamoDb and save it to "resdata"
 
         this.fetch_from_dynamo('all').then(data => {
-            console.log('fetch_all_Companies :', data)
+            console.log('fetch_all_Students :', data)
             this.setState({ resdata: data })
         })
     }
@@ -34,7 +35,7 @@ export class CompanyList extends React.Component {
         //fetches acts from aws. Gets all acts if id == 'all' and one specific act if id == 'id-of-act'
 
         return axios({
-            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/getCompany/' + id,
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/getStudent/' + id,
             method: 'GET',
             crossDomain: true,
             responseType: 'json', // important
@@ -45,30 +46,39 @@ export class CompanyList extends React.Component {
         });
     }
 
-    handleCompanyClicked(id){
+    handlestudentClicked(id) {
         // console.log("id list",id);
-        var companies = this.state.resdata;
-        var company = companies.filter(d=>d.id===id);
-        // console.log(company);
-        
-        
+        var students = this.state.resdata;
+        var student = students.filter(d => d.id === id);
+        // console.log(student);
+
+
         this.setState(() => {
             return {
                 clickId: id,
-                company: company[0]
+                student: student[0]
             };
         });
-        console.log("this.state.company : ",this.state.company[0]);
+        console.log("this.state.student : ", this.state.student[0]);
         // return 'This option already exists';
     }
 
+    closeStudentDetail(){
+        this.setState(() => {
+            return {
+                clickId: "",
+                student: [],//TODO: empty all student data
+            };
+        });
+    }
+
     render() {
-        const company = this.state.company;
+        const student = this.state.student;
         return (
             <div>
-                <h2 className="mb-4 mt-0 text-center">Company List</h2>
+                <h2 className="mb-4 mt-0 text-center">Student List</h2>
                 {
-                    this.state.resdata.map((option) => <CompanyTab key={option.id} optionText={option} handleCompanyClicked={this.handleCompanyClicked}/>)
+                    this.state.resdata.map((option) => <StudentTab key={option.id} optionText={option} handlestudentClicked={this.handlestudentClicked} />)
                 }
                 {/* modal */}
                 <div class="modal fade" id="myModal" role="dialog">
@@ -81,11 +91,11 @@ export class CompanyList extends React.Component {
                             </div>
                             <div class="modal-body">
                                 {/* ------------- */}
-                                <CompanyDetails optionText={company} />
+                                <StudentDetails optionText={student} />
                                 {/* ------------ */}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
                             </div>
                         </div>
 
