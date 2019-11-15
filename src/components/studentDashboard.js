@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-export class Base extends React.Component {
+export class StudentDashboard extends React.Component {
     constructor(props) {
         super(props);
 
@@ -12,7 +12,7 @@ export class Base extends React.Component {
     render() {
         return (
             <div>
-                
+                StudentDashboard
             </div>
         );
     }

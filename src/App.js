@@ -4,7 +4,7 @@ import './App.css';
 import { RegisterUser } from "./components/registerUser";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
-import { Login } from "./components/login";
+import { Homepage } from "./components/homepage";
 import { AddCompany } from "./components/addCompany";
 import { CompanyTab } from "./components/companyTab";
 import { CompanyDetails } from "./components/companyDetails";
@@ -13,7 +13,7 @@ import { CompanyList } from "./components/companyList";
 function App() {
   return (
     <div className="App">
-      <Header/>
+      {/* <Header/> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -28,13 +28,13 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <AddCompany/>
-      {/* <Login/> */}
+      {/* <AddCompany/> */}
+      <Homepage/>
       {/* <RegisterUser/> */}
       {/* <CompanyDetails/> */}
       {/* <CompanyTab/> */}
-      <CompanyList/>
-      <Footer/>
+      {/* <CompanyList/> */}
+      {/* <Footer/>s */}
     </div>
   );
 }

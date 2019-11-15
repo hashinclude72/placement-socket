@@ -22,7 +22,7 @@ module.exports.register = (event, context, callback) => {
     const params = {
         TableName: "PlacementSocketStudents",
         Item: {
-            id: uuid.v1(),
+            id: data.sapid,
             "firstname": data.firstname,
             "lastname": data.lastname,
             "email": data.email,
@@ -58,7 +58,7 @@ module.exports.register = (event, context, callback) => {
             callback(null, {
                 statusCode: error.statusCode || 501,
                 headers: { 'Content-Type': 'text/plain' },
-                body: 'Couldn\'t create the User.',
+                body: 'Couldn\'t create the User, object.',
             });
             return;
         }
