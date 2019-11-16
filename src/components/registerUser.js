@@ -56,11 +56,11 @@ export class RegisterUser extends React.Component {
     }
     render() {
         return (
-            <div className="container">
+            // <div className="container">
 
-                <div className="col-md-5 relative align-self-center">
+                <div className="col-md-12 relative align-self-center">
 
-                    <h2 className="mb-4 mt-0 text-center">Sign Up</h2>
+                    <h3 className="mb-4 mt-0 text-center">Sign Up</h3>
                     <div className="form-group">
                         <input type="text" id="fname" className="form-control pb_height-50 reverse" placeholder="First name" />
                     </div>
@@ -138,7 +138,7 @@ export class RegisterUser extends React.Component {
 
                 </div>
 
-            </div>
+            // </div>
         );
     }
 }

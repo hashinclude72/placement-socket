@@ -30,8 +30,8 @@ export class Homepage extends React.Component {
             const user = JSON.parse(json);
 
             if (user) {
-                this.setState(() => ({ 
-                    loggedUser:user,
+                this.setState(() => ({
+                    loggedUser: user,
                     loginStatus: true,
                 }));
             }
@@ -45,8 +45,8 @@ export class Homepage extends React.Component {
         localStorage.setItem('loggedUser', json);
     }
 
-    checkLogin(user, b){
-        if(b===true){
+    checkLogin(user, b) {
+        if (b === true) {
             this.setState(() => {
                 return {
                     loginStatus: true,
@@ -59,22 +59,29 @@ export class Homepage extends React.Component {
     render() {
         return (
             <div>
-                <Header username={this.state.loggedUser.id}/>
+                <Header loggedUser={this.state.loggedUser} />
                 {/* <AddCompany/> */}
 
-                {
-                    !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
-                }
-
-                <Route exact path="/register-user" component={RegisterUser} />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-5">
+                            {
+                                !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
+                            }
+                        </div>
+                        <div className="col-md-5 align-self-center">
+                            <Route exact path="/register-user" component={RegisterUser} />
+                        </div>
+                    </div>
+                </div>
                 {/* <Login checkLogin={this.checkLogin}/> */}
                 {/* <StudentDashboard/> */}
                 {/* <RegisterUser/> */}
                 {/* <CompanyTab/> */}
                 {/* <CompanyList/> */}
-                <Footer/>s
+                <Footer />
             </div>
-            
+
         );
     }
 }

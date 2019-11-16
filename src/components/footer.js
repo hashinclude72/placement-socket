@@ -15,9 +15,9 @@ export class Footer extends React.Component {
                     <div className="row text-center">
                         <div className="col">
                             <ul className="list-inline">
-                                <li className="list-inline-item"><a href="#" className="p-2"><i className="fa fa-facebook"></i></a></li>
-                                <li className="list-inline-item"><a href="#" className="p-2"><i className="fa fa-twitter"></i></a></li>
-                                <li className="list-inline-item"><a href="#" className="p-2"><i className="fa fa-linkedin"></i></a></li>
+                                <li className="list-inline-item"><a href="#" className="p-2"><i class="fab fa-github-alt"></i></a></li>
+                                <li className="list-inline-item"><a href="#" className="p-2"><i class="fab fa-twitter"></i></a></li>
+                                <li className="list-inline-item"><a href="#" className="p-2"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                     </div>
