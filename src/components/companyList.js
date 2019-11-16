@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { CompanyTab } from "./companyTab";
 import { CompanyDetails } from "./companyDetails";
+import { Table } from "./table";
 
 export class CompanyList extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ export class CompanyList extends React.Component {
             company:"",
 
         };
-        this.handleCompanyClicked = this.handleCompanyClicked.bind(this);
+        this.handleClicked = this.handleClicked.bind(this);
 
     }
 
@@ -25,8 +26,12 @@ export class CompanyList extends React.Component {
         //fetch all acts from aws DynamoDb and save it to "resdata"
 
         this.fetch_from_dynamo('all').then(data => {
-            console.log('fetch_all_Companies :', data)
-            this.setState({ resdata: data })
+            console.log('fetch_all_Companies :', data);
+            var companies = [];
+            data.forEach(function (item) {
+                companies.push(item);
+            });
+            this.setState({ resdata: companies })
         })
     }
 
@@ -45,7 +50,7 @@ export class CompanyList extends React.Component {
         });
     }
 
-    handleCompanyClicked(id){
+    handleClicked(id){
         // console.log("id list",id);
         var companies = this.state.resdata;
         var company = companies.filter(d=>d.id===id);
@@ -64,25 +69,36 @@ export class CompanyList extends React.Component {
 
     render() {
         const company = this.state.company;
+        const comColumns = [
+            { title: 'Company Name', field: 'companyName' },
+            { title: 'category', field: 'category' },
+            { title: 'jobProfile', field: 'jobProfile' },
+            {
+                title: 'expectedSalary',
+                field: 'expectedSalary',
+            },
+            {
+                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#companyModal" onClick={() => this.handleClicked(rowData.id)}><i class="fas fa-edit"></i></button>,
+            },
+        ];
         return (
             <div>
-                <h2 className="mb-4 mt-0 text-center">Company List</h2>
+                <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
+
+                {/* <h2 className="mb-4 mt-0 text-center">Company List</h2>
                 {
                     this.state.resdata.map((option) => <CompanyTab key={option.id} optionText={option} handleCompanyClicked={this.handleCompanyClicked}/>)
-                }
-                {/* modal */}
+                } */}
+
                 <div className="modal fade" id="companyModal" role="dialog">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-lg">
 
                         <div className="modal-content">
                             <div className="modal-header">
                                 <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
                             <div className="modal-body">
-                                {/* ------------- */}
                                 <CompanyDetails optionText={company} />
-                                {/* ------------ */}
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>

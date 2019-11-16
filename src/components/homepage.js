@@ -11,6 +11,8 @@ import { CompanyTab } from "./companyTab";
 import { CompanyDetails } from "./companyDetails";
 import { StudentDashboard } from "./studentDashboard";
 import { AdminDashboard } from "./adminDashboard";
+import StudentTable from "./table";
+import MaterialTableDemo from "./tables";
 
 export class Homepage extends React.Component {
     constructor(props) {
@@ -64,15 +66,18 @@ export class Homepage extends React.Component {
 
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-5">
+                        <div className="col-md-11">
                             {
                                 !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
                             }
                         </div>
-                        <div className="col-md-5 align-self-center">
+                        <div className="col-md-11 align-self-center">
                             <Route exact path="/register-user" component={RegisterUser} />
                         </div>
                     </div>
+                </div>
+                <div className="container">
+                    {/* <MaterialTableDemo /> */}
                 </div>
                 {/* <Login checkLogin={this.checkLogin}/> */}
                 {/* <StudentDashboard/> */}

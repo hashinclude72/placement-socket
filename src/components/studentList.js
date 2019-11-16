@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { StudentTab } from "./studentTab";
 import { StudentDetails } from "./studentDetails";
+import { Table } from "./table";
+
 
 export class StudentList extends React.Component {
     constructor(props) {
@@ -10,10 +12,10 @@ export class StudentList extends React.Component {
         this.state = {
             resdata: [],
             clickId: "",
-            student: "",
+            student: ""
 
         };
-        this.handlestudentClicked = this.handlestudentClicked.bind(this);
+        this.handleClicked = this.handleClicked.bind(this);
         this.closeStudentDetail = this.closeStudentDetail.bind(this);
 
     }
@@ -26,10 +28,14 @@ export class StudentList extends React.Component {
         //fetch all acts from aws DynamoDb and save it to "resdata"
 
         this.fetch_from_dynamo('all').then(data => {
-            console.log('fetch_all_Students :', data)
-            this.setState({ 
-                resdata: data
-             })
+            console.log('fetch_all_Students :', data);
+            var studentss = [];
+            data.forEach(function (item) {
+                studentss.push(item);
+            });
+            this.setState({
+                resdata: studentss
+            })
         })
     }
 
@@ -48,7 +54,7 @@ export class StudentList extends React.Component {
         });
     }
 
-    handlestudentClicked(id) {
+    handleClicked(id) {
         // console.log("id list",id);
         var students = this.state.resdata;
         var student = students.filter(d => d.id === id);
@@ -65,7 +71,7 @@ export class StudentList extends React.Component {
         // return 'This option already exists';
     }
 
-    closeStudentDetail(){
+    closeStudentDetail() {
         this.setState(() => {
             return {
                 clickId: "",
@@ -76,15 +82,27 @@ export class StudentList extends React.Component {
 
     render() {
         const student = this.state.student;
+        const stuCols = [
+            { title: 'Name', field: 'firstname' },
+            { title: 'Sap Id', field: 'sapid' },
+            { title: 'CGPA', field: 'cgpa' },
+            { title: 'Mobile No', field: 'mobile', },
+            {
+                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#studentModal" onClick={() => this.handleClicked(rowData.id)}><i class="fas fa-edit"></i></button>,
+            },
+        ];
+
         return (
             <div>
-                <h2 className="mb-4 mt-0 text-center">Student List</h2>
+                <Table data={this.state.resdata} columns={stuCols} title="Students" handleClicked={this.handleClicked} />
+
+                {/* <h2 className="mb-4 mt-0 text-center">Student List</h2>
                 {
                     this.state.resdata.map((option) => <StudentTab key={option.id} optionText={option} handlestudentClicked={this.handlestudentClicked} />)
                 }
-                {/* modal */}
+                modal */}
                 <div className="modal fade" id="studentModal" role="dialog">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-lg">
 
                         <div className="modal-content">
                             <div className="modal-header">
@@ -92,9 +110,7 @@ export class StudentList extends React.Component {
                                 {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
                             <div className="modal-body">
-                                {/* ------------- */}
                                 <StudentDetails key={student.id} optionText={student} />
-                                {/* ------------ */}
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>

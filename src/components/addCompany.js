@@ -5,7 +5,7 @@ export class AddCompany extends React.Component {
         super(props);
 
         this.state = {
-            encodedPdf1:"",
+            encodedPdf1: "",
             encodedPdf2: "",
 
         };
@@ -14,13 +14,13 @@ export class AddCompany extends React.Component {
 
     }
 
-//  TODO:
+    //  TODO:
     // addWorkflow(){
     //     var inp = document.createElement('input');
     // }
 
 
-    encodePdf(pdfid){
+    encodePdf(pdfid) {
         var pdf = document.getElementById(pdfid).files[0];
         console.log("bcbcbccbcbc");
 
@@ -29,15 +29,15 @@ export class AddCompany extends React.Component {
         reader.addEventListener("load", function (e) {
             encodedPdf = e.target.result.replace(/data:application\/(pdf);base64,/, '');
             console.log(encodedPdf);
-            
-            if(pdfid === "pdf1"){
-                this.setState({encodedPdf1: encodedPdf});
+
+            if (pdfid === "pdf1") {
+                this.setState({ encodedPdf1: encodedPdf });
             } else if (pdfid === "pdf2") {
                 this.setState({ encodedPdf2: encodedPdf });
             }
             pdfid = pdfid + "ch";
             document.getElementById(pdfid).className = 'fas fa-check-circle';
-            
+
             // axios({
             //     url: '',
             //     method: 'POST',
@@ -48,7 +48,7 @@ export class AddCompany extends React.Component {
             //     // document.getElementById('save').classNameName = 'btn btn-success bottomright';
             //     alert("User Added");
             // });
-            
+
             // return encodedImage;
         }.bind(this), false);
         reader.readAsDataURL(pdf);
@@ -88,7 +88,7 @@ export class AddCompany extends React.Component {
         return (
             <div className="container">
 
-                <div className="col-md-5 relative align-self-center">
+                <div className="col-md-12 relative align-self-center">
 
                     <h2 className="mb-4 mt-0 text-center">Add Company</h2>
                     <div className="form-group">
@@ -132,11 +132,12 @@ export class AddCompany extends React.Component {
                     <div className="form-group" id="addFile">
                         {/* <input type="button" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" value="Add file" onClick={this.addFile} /> */}
                         <div>
-                            <input type="file" id="pdf1" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" onChange={() => this.encodePdf('pdf1')}/>
+                            <input type="file" id="pdf1" className="btn btn-dark btn-sm btn-block pb_btn-pill btn-shadow-blue" onChange={() => this.encodePdf('pdf1')} />
                             <i id="pdf1ch" className="fas fa-times-circle"></i>
                         </div>
+
                         <div>
-                            <input type="file" id="pdf2" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" onChange={() => this.encodePdf('pdf2')}/>
+                            <input type="file" id="pdf2" className="btn btn-dark btn-sm btn-block pb_btn-pill btn-shadow-blue" onChange={() => this.encodePdf('pdf2')} />
                             <i id="pdf2ch" className="fas fa-times-circle"></i>
                         </div>
                     </div>
