@@ -25,11 +25,27 @@ provider:
       Resource: "*"
 
 functions:
-  registerStudent:
-    handler: src/registerStudent.register
+  createUser:
+    handler: src/user.create
     events:
       - http:
-          path: registerStudent
+          path: createUser
+          method: post
+          cors: true
+
+  getUser:
+    handler: src/user.get
+    events:
+      - http:
+          path: getUser/{id}
+          method: get
+          cors: true
+
+  updateUser:
+    handler: src/user.update
+    events:
+      - http:
+          path: updateUser/{id}
           method: post
           cors: true
 
@@ -57,13 +73,6 @@ functions:
           method: post
           cors: true
 
-  getStudent:
-    handler: src/getStudent.get
-    events:
-      - http:
-          path: getStudent/{id}
-          method: get
-          cors: true
 
 resources:
   Resources:

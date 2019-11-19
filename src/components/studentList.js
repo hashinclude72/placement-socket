@@ -43,7 +43,7 @@ export class StudentList extends React.Component {
         //fetches acts from aws. Gets all acts if id == 'all' and one specific act if id == 'id-of-act'
 
         return axios({
-            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/getStudent/' + id,
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/getUser/' + id,
             method: 'GET',
             crossDomain: true,
             responseType: 'json', // important

@@ -44,7 +44,7 @@ export class RegisterUser extends React.Component {
 
         console.log("data :", data);
         axios({
-            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/registerStudent',
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/createUser',
             method: 'POST',
             data: data,
         }).then((response) => {

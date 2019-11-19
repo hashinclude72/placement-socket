@@ -87,10 +87,22 @@
               }
             }
           },
-          "RegisterStudentLogGroup": {
+          "CreateUserLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/placement-socket-dev-registerStudent"
+              "LogGroupName": "/aws/lambda/placement-socket-dev-createUser"
+            }
+          },
+          "GetUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/placement-socket-dev-getUser"
+            }
+          },
+          "UpdateUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/placement-socket-dev-updateUser"
             }
           },
           "AddCompanyLogGroup": {
@@ -109,12 +121,6 @@
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
               "LogGroupName": "/aws/lambda/placement-socket-dev-loginUser"
-            }
-          },
-          "GetStudentLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/placement-socket-dev-getStudent"
             }
           },
           "IamRoleLambdaExecution": {
@@ -199,17 +205,17 @@
               }
             }
           },
-          "RegisterStudentLambdaFunction": {
+          "CreateUserLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
               },
-              "FunctionName": "placement-socket-dev-registerStudent",
-              "Handler": "src/registerStudent.register",
+              "FunctionName": "placement-socket-dev-createUser",
+              "Handler": "src/user.create",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -227,18 +233,102 @@
               }
             },
             "DependsOn": [
-              "RegisterStudentLogGroup",
+              "CreateUserLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "RegisterStudentLambdaVersionuCPR0Fo32cV7qnE8rS7fNgpPiac86dyjat1nL8kk": {
+          "CreateUserLambdaVersionWVAeWYn4ECf4WIElm2H90eRuBiDvQupk1tJwON5TWA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "RegisterStudentLambdaFunction"
+                "Ref": "CreateUserLambdaFunction"
               },
-              "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+            }
+          },
+          "GetUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+              },
+              "FunctionName": "placement-socket-dev-getUser",
+              "Handler": "src/user.get",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "DYNAMODB_TABLE": "PlacementSocketStudents",
+                  "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
+                }
+              }
+            },
+            "DependsOn": [
+              "GetUserLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "GetUserLambdaVersionfAkCneCnve16dNDL48woJWXSM2Z2TQkEQl7UAAbdj0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetUserLambdaFunction"
+              },
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+            }
+          },
+          "UpdateUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+              },
+              "FunctionName": "placement-socket-dev-updateUser",
+              "Handler": "src/user.update",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "DYNAMODB_TABLE": "PlacementSocketStudents",
+                  "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
+                }
+              }
+            },
+            "DependsOn": [
+              "UpdateUserLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "UpdateUserLambdaVersion6bjerRot34MreGJwuz19uhLr58AH3sQKRm6tPLM": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateUserLambdaFunction"
+              },
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
             }
           },
           "AddCompanyLambdaFunction": {
@@ -248,7 +338,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-addCompany",
               "Handler": "src/addCompany.add",
@@ -273,14 +363,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AddCompanyLambdaVersionTY0gzUCGdg9xk751mZl1CQJcELWiCAbiKxNAdg1Y": {
+          "AddCompanyLambdaVersionI77ZgBOqkPx5fjZ9ELdK6szCEIu7QSXm31JQ7vnfI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AddCompanyLambdaFunction"
               },
-              "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
             }
           },
           "GetCompanyLambdaFunction": {
@@ -290,7 +380,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-getCompany",
               "Handler": "src/getCompany.get",
@@ -315,14 +405,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetCompanyLambdaVersionEFiH9w5L9eJhxTgczLU3pqXOI1GbMPZ2SptF4sZeGY": {
+          "GetCompanyLambdaVersion2hG0leSW9EtaCULZHsTJ86mNolWKw9657e29x2k87U": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetCompanyLambdaFunction"
               },
-              "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
             }
           },
           "LoginUserLambdaFunction": {
@@ -332,7 +422,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-loginUser",
               "Handler": "src/loginUser.login",
@@ -357,56 +447,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "LoginUserLambdaVersionokOWRYakHrNJaZ4kV8ML3IFXtYrjo24GO0EVihWVpc": {
+          "LoginUserLambdaVersion1s3fLWzuIQXOVhnjJHfxljS86FvbeZ8WDffr8SKTOSI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LoginUserLambdaFunction"
               },
-              "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
-            }
-          },
-          "GetStudentLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z/placement-socket.zip"
-              },
-              "FunctionName": "placement-socket-dev-getStudent",
-              "Handler": "src/getStudent.get",
-              "MemorySize": 1024,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs8.10",
-              "Timeout": 6,
-              "Environment": {
-                "Variables": {
-                  "DYNAMODB_TABLE": "PlacementSocketStudents",
-                  "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
-                }
-              }
-            },
-            "DependsOn": [
-              "GetStudentLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "GetStudentLambdaVersionbvXR5SvyGpLQMMKNHEQGUGqhGqVfeUU9iNtCzXKbCk": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetStudentLambdaFunction"
-              },
-              "CodeSha256": "LWI31waueEZKUc3pEr0Vjm+fy24pB+eDScXEGGm+UWY="
+              "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
             }
           },
           "ApiGatewayRestApi": {
@@ -420,7 +468,7 @@
               }
             }
           },
-          "ApiGatewayResourceRegisterstudent": {
+          "ApiGatewayResourceCreateuser": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -429,7 +477,61 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "registerStudent",
+              "PathPart": "createUser",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGetuser": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "getUser",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGetuserIdVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceGetuser"
+              },
+              "PathPart": "{id}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceUpdateuser": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "updateUser",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceUpdateuserIdVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceUpdateuser"
+              },
+              "PathPart": "{id}",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -492,34 +594,7 @@
               }
             }
           },
-          "ApiGatewayResourceGetstudent": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "getStudent",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceGetstudentIdVar": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceGetstudent"
-              },
-              "PathPart": "{id}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodRegisterstudentOptions": {
+          "ApiGatewayMethodCreateuserOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -559,7 +634,101 @@
                 ]
               },
               "ResourceId": {
-                "Ref": "ApiGatewayResourceRegisterstudent"
+                "Ref": "ApiGatewayResourceCreateuser"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodGetuserIdVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGetuserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodUpdateuserIdVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUpdateuserIdVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -707,60 +876,13 @@
               }
             }
           },
-          "ApiGatewayMethodGetstudentIdVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true,
-                    "method.response.header.Access-Control-Allow-Credentials": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'",
-                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceGetstudentIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodRegisterstudentPost": {
+          "ApiGatewayMethodCreateuserPost": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "POST",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceRegisterstudent"
+                "Ref": "ApiGatewayResourceCreateuser"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -785,7 +907,93 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "RegisterStudentLambdaFunction",
+                          "CreateUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodGetuserIdVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGetuserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodUpdateuserIdVarPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUpdateuserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateUserLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -926,50 +1134,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayMethodGetstudentIdVarGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceGetstudentIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "GetStudentLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayDeployment1573802396010": {
+          "ApiGatewayDeployment1574177779216": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -978,24 +1143,100 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodRegisterstudentOptions",
+              "ApiGatewayMethodCreateuserOptions",
+              "ApiGatewayMethodGetuserIdVarOptions",
+              "ApiGatewayMethodUpdateuserIdVarOptions",
               "ApiGatewayMethodAddcompanyOptions",
               "ApiGatewayMethodGetcompanyIdVarOptions",
               "ApiGatewayMethodLoginuserOptions",
-              "ApiGatewayMethodGetstudentIdVarOptions",
-              "ApiGatewayMethodRegisterstudentPost",
+              "ApiGatewayMethodCreateuserPost",
+              "ApiGatewayMethodGetuserIdVarGet",
+              "ApiGatewayMethodUpdateuserIdVarPost",
               "ApiGatewayMethodAddcompanyPost",
               "ApiGatewayMethodGetcompanyIdVarGet",
-              "ApiGatewayMethodLoginuserPost",
-              "ApiGatewayMethodGetstudentIdVarGet"
+              "ApiGatewayMethodLoginuserPost"
             ]
           },
-          "RegisterStudentLambdaPermissionApiGateway": {
+          "CreateUserLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "RegisterStudentLambdaFunction",
+                  "CreateUserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "GetUserLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetUserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "UpdateUserLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "UpdateUserLambdaFunction",
                   "Arn"
                 ]
               },
@@ -1138,43 +1379,6 @@
               }
             }
           },
-          "GetStudentLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "GetStudentLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
           "PlacementSocketDynamoDbTable": {
             "Type": "AWS::DynamoDB::Table",
             "DeletionPolicy": "Retain",
@@ -1228,34 +1432,40 @@
               "Ref": "ServerlessDeploymentBucket"
             }
           },
-          "RegisterStudentLambdaFunctionQualifiedArn": {
+          "CreateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RegisterStudentLambdaVersionuCPR0Fo32cV7qnE8rS7fNgpPiac86dyjat1nL8kk"
+              "Ref": "CreateUserLambdaVersionWVAeWYn4ECf4WIElm2H90eRuBiDvQupk1tJwON5TWA"
+            }
+          },
+          "GetUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetUserLambdaVersionfAkCneCnve16dNDL48woJWXSM2Z2TQkEQl7UAAbdj0"
+            }
+          },
+          "UpdateUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateUserLambdaVersion6bjerRot34MreGJwuz19uhLr58AH3sQKRm6tPLM"
             }
           },
           "AddCompanyLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AddCompanyLambdaVersionTY0gzUCGdg9xk751mZl1CQJcELWiCAbiKxNAdg1Y"
+              "Ref": "AddCompanyLambdaVersionI77ZgBOqkPx5fjZ9ELdK6szCEIu7QSXm31JQ7vnfI"
             }
           },
           "GetCompanyLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetCompanyLambdaVersionEFiH9w5L9eJhxTgczLU3pqXOI1GbMPZ2SptF4sZeGY"
+              "Ref": "GetCompanyLambdaVersion2hG0leSW9EtaCULZHsTJ86mNolWKw9657e29x2k87U"
             }
           },
           "LoginUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LoginUserLambdaVersionokOWRYakHrNJaZ4kV8ML3IFXtYrjo24GO0EVihWVpc"
-            }
-          },
-          "GetStudentLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetStudentLambdaVersionbvXR5SvyGpLQMMKNHEQGUGqhGqVfeUU9iNtCzXKbCk"
+              "Ref": "LoginUserLambdaVersion1s3fLWzuIQXOVhnjJHfxljS86FvbeZ8WDffr8SKTOSI"
             }
           },
           "ServiceEndpoint": {
@@ -1350,12 +1560,12 @@
     },
     "pluginsData": {},
     "functions": {
-      "registerStudent": {
-        "handler": "src/registerStudent.register",
+      "createUser": {
+        "handler": "src/user.create",
         "events": [
           {
             "http": {
-              "path": "registerStudent",
+              "path": "createUser",
               "method": "post",
               "cors": {
                 "origins": [
@@ -1380,7 +1590,81 @@
             }
           }
         ],
-        "name": "placement-socket-dev-registerStudent",
+        "name": "placement-socket-dev-createUser",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs8.10",
+        "vpc": {}
+      },
+      "getUser": {
+        "handler": "src/user.get",
+        "events": [
+          {
+            "http": {
+              "path": "getUser/{id}",
+              "method": "get",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "placement-socket-dev-getUser",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs8.10",
+        "vpc": {}
+      },
+      "updateUser": {
+        "handler": "src/user.update",
+        "events": [
+          {
+            "http": {
+              "path": "updateUser/{id}",
+              "method": "post",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "placement-socket-dev-updateUser",
         "package": {},
         "memory": 1024,
         "timeout": 6,
@@ -1497,43 +1781,6 @@
         "timeout": 6,
         "runtime": "nodejs8.10",
         "vpc": {}
-      },
-      "getStudent": {
-        "handler": "src/getStudent.get",
-        "events": [
-          {
-            "http": {
-              "path": "getStudent/{id}",
-              "method": "get",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "placement-socket-dev-getStudent",
-        "package": {},
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs8.10",
-        "vpc": {}
       }
     },
     "resources": {
@@ -1592,7 +1839,7 @@
     "artifact": "C:\\Users\\hash-include\\Documents\\Gitkraken\\placement-socket\\serverless-apis\\.serverless\\placement-socket.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/placement-socket/dev/1573802401129-2019-11-15T07:20:01.129Z",
+    "artifactDirectoryName": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z",
     "artifact": "placement-socket.zip"
   }
 }
