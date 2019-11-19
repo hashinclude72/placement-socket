@@ -74,7 +74,7 @@ export class StudentDetails extends React.Component {
             standingBacklogs: document.getElementById('standingBacklogs').value,
         }
 
-        console.log("update data :", data);
+        console.log("update student data :", data);
         axios({
             url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/updateUser/' + id,
             method: 'POST',
@@ -90,67 +90,28 @@ export class StudentDetails extends React.Component {
         return (
             <div className="container">
 
-                {/* <div className="col-md-12 relative">
-
-                    <h2 className="mb-4 mt-0 text-center">Student Details</h2>
-                    <div className="form-group">
-                        <h6 className="text-left">Student Name : {this.props.optionText.companyName}</h6><input type="text" id="companyName" className="form-control pb_height-50 reverse" value={this.props.optionText.companyName} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Category : </h6><input type="text" id="category" className="form-control pb_height-50 reverse" value={this.props.optionText.category} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Job Profile : </h6><input type="text" id="jobProfile" className="form-control pb_height-50 reverse" value={this.props.optionText.jobProfile} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Expected Salary : </h6><input type="text" id="expectedSalary" className="form-control pb_height-50 reverse" value={this.props.optionText.expectedSalary} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Students Required : </h6><input type="text" id="studentsRequired" className="form-control pb_height-50 reverse" value={this.props.optionText.studentsRequired} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Company visiting campus : </h6><input type="text" id="companyVisitingCampus" className="form-control pb_height-50 reverse" value={this.props.optionText.companyVisitingCampus} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">10th Passing Criteria : </h6><input type="text" id="criteriaOf10th" className="form-control pb_height-50 reverse" value={this.props.optionText.criteriaOf10th} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">12th passing Criteria : </h6><input type="text" id="criteriaOf12th" className="form-control pb_height-50 reverse" value={this.props.optionText.criteriaOf12th} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Collage Passing Criteria : </h6><input type="text" id="collegeCriteria" className="form-control pb_height-50 reverse" value={this.props.optionText.collegeCriteria} disabled />
-                    </div>
-                    <div className="form-group">
-                        <h6 className="text-left">Description : </h6><textarea rows="5" type="text" id="description" className="form-control reverse" value={this.props.optionText.description} disabled />
-                    </div>
-                    <div className="form-group">
-                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" />
-                    </div>
-
-                </div> */}
-
                 <div className="col-md-12 relative align-self-center">
 
                     <h2 className="mb-4 mt-0 text-center">Student Details</h2>
                     <div className="form-group">
                         <h6 className="text-left">First Name : </h6>
-                        <input type="text" id="fname" className="form-control pb_height-50 reverse" disabled/>
+                        <input type="text" id="fname" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Last Name : </h6>
-                        <input type="text" id="lname" className="form-control pb_height-50 reverse"  disabled />
+                        <input type="text" id="lname" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Email : </h6>
-                        <input type="text" id="email" className="form-control pb_height-50 reverse"  disabled />
+                        <input type="text" id="email" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Mobile no. : </h6>
-                        <input type="text" id="mobile" className="form-control pb_height-50 reverse"  disabled />
+                        <input type="text" id="mobile" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">SAP ID : </h6>
-                        <input type="text" id="sapid" className="form-control pb_height-50 reverse"  disabled />
+                        <input type="text" id="sapid" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Roll Number : </h6>

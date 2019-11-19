@@ -49,16 +49,16 @@ functions:
           method: post
           cors: true
 
-  addCompany:
-      handler: src/addCompany.add
+  createCompany:
+      handler: src/company.create
       events:
         - http:
-            path: addCompany
+            path: createCompany
             method: post
             cors: true
             
   getCompany:
-    handler: src/getCompany.get
+    handler: src/company.get
     events:
       - http:
           path: getCompany/{id}

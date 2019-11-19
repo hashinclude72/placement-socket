@@ -70,10 +70,10 @@
         "LogGroupName": "/aws/lambda/placement-socket-dev-updateUser"
       }
     },
-    "AddCompanyLogGroup": {
+    "CreateCompanyLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/placement-socket-dev-addCompany"
+        "LogGroupName": "/aws/lambda/placement-socket-dev-createCompany"
       }
     },
     "GetCompanyLogGroup": {
@@ -185,7 +185,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-createUser",
         "Handler": "src/user.create",
@@ -210,14 +210,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateUserLambdaVersionWVAeWYn4ECf4WIElm2H90eRuBiDvQupk1tJwON5TWA": {
+    "CreateUserLambdaVersionmVv6Z1YRTiihXKM5mKSAHrQ2DrZkmNnPXpQX48KbXZM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateUserLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
     "GetUserLambdaFunction": {
@@ -227,7 +227,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-getUser",
         "Handler": "src/user.get",
@@ -252,14 +252,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetUserLambdaVersionfAkCneCnve16dNDL48woJWXSM2Z2TQkEQl7UAAbdj0": {
+    "GetUserLambdaVersionwstbwfWYX7GbmS6YBfxJd7xQE0bYRwxrSBWDex2Mj04": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
     "UpdateUserLambdaFunction": {
@@ -269,7 +269,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-updateUser",
         "Handler": "src/user.update",
@@ -294,27 +294,27 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "UpdateUserLambdaVersion6bjerRot34MreGJwuz19uhLr58AH3sQKRm6tPLM": {
+    "UpdateUserLambdaVersiontye5uifAY4LUzzrHomasRA4YqnQ72TivN9yFIz5jU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateUserLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
-    "AddCompanyLambdaFunction": {
+    "CreateCompanyLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
-        "FunctionName": "placement-socket-dev-addCompany",
-        "Handler": "src/addCompany.add",
+        "FunctionName": "placement-socket-dev-createCompany",
+        "Handler": "src/company.create",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -332,18 +332,18 @@
         }
       },
       "DependsOn": [
-        "AddCompanyLogGroup",
+        "CreateCompanyLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "AddCompanyLambdaVersionI77ZgBOqkPx5fjZ9ELdK6szCEIu7QSXm31JQ7vnfI": {
+    "CreateCompanyLambdaVersionZwAOBlsyg4OX2rCuh88IXsodhj8pLglDVtkt5MrZQw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "AddCompanyLambdaFunction"
+          "Ref": "CreateCompanyLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
     "GetCompanyLambdaFunction": {
@@ -353,10 +353,10 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-getCompany",
-        "Handler": "src/getCompany.get",
+        "Handler": "src/company.get",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -378,14 +378,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetCompanyLambdaVersion2hG0leSW9EtaCULZHsTJ86mNolWKw9657e29x2k87U": {
+    "GetCompanyLambdaVersion2erEDfAsiC1oJHXGrk3MomOOm0YFADR1abZwrCjmwMw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetCompanyLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
     "LoginUserLambdaFunction": {
@@ -395,7 +395,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/placement-socket/dev/1574177791991-2019-11-19T15:36:31.991Z/placement-socket.zip"
+          "S3Key": "serverless/placement-socket/dev/1574183398086-2019-11-19T17:09:58.086Z/placement-socket.zip"
         },
         "FunctionName": "placement-socket-dev-loginUser",
         "Handler": "src/loginUser.login",
@@ -420,14 +420,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "LoginUserLambdaVersion1s3fLWzuIQXOVhnjJHfxljS86FvbeZ8WDffr8SKTOSI": {
+    "LoginUserLambdaVersionKdM8mCBl1uylwTxIfVCER8rlEH0x0d9guuMOncKEA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginUserLambdaFunction"
         },
-        "CodeSha256": "qRHngPcTur2XA0ugf5pT00sA2meqX3PaKw2D5kVdXHA="
+        "CodeSha256": "vmyrLoC7enrU8gT3kIbHRp1/iry8b4wElXLOrOi67Xc="
       }
     },
     "ApiGatewayRestApi": {
@@ -510,7 +510,7 @@
         }
       }
     },
-    "ApiGatewayResourceAddcompany": {
+    "ApiGatewayResourceCreatecompany": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -519,7 +519,7 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "addCompany",
+        "PathPart": "createCompany",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -708,7 +708,7 @@
         }
       }
     },
-    "ApiGatewayMethodAddcompanyOptions": {
+    "ApiGatewayMethodCreatecompanyOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "AuthorizationType": "NONE",
@@ -748,7 +748,7 @@
           ]
         },
         "ResourceId": {
-          "Ref": "ApiGatewayResourceAddcompany"
+          "Ref": "ApiGatewayResourceCreatecompany"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -978,13 +978,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodAddcompanyPost": {
+    "ApiGatewayMethodCreatecompanyPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceAddcompany"
+          "Ref": "ApiGatewayResourceCreatecompany"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -1009,7 +1009,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "AddCompanyLambdaFunction",
+                    "CreateCompanyLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -1107,7 +1107,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1574177779216": {
+    "ApiGatewayDeployment1574183393751": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1119,13 +1119,13 @@
         "ApiGatewayMethodCreateuserOptions",
         "ApiGatewayMethodGetuserIdVarOptions",
         "ApiGatewayMethodUpdateuserIdVarOptions",
-        "ApiGatewayMethodAddcompanyOptions",
+        "ApiGatewayMethodCreatecompanyOptions",
         "ApiGatewayMethodGetcompanyIdVarOptions",
         "ApiGatewayMethodLoginuserOptions",
         "ApiGatewayMethodCreateuserPost",
         "ApiGatewayMethodGetuserIdVarGet",
         "ApiGatewayMethodUpdateuserIdVarPost",
-        "ApiGatewayMethodAddcompanyPost",
+        "ApiGatewayMethodCreatecompanyPost",
         "ApiGatewayMethodGetcompanyIdVarGet",
         "ApiGatewayMethodLoginuserPost"
       ]
@@ -1241,12 +1241,12 @@
         }
       }
     },
-    "AddCompanyLambdaPermissionApiGateway": {
+    "CreateCompanyLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "AddCompanyLambdaFunction",
+            "CreateCompanyLambdaFunction",
             "Arn"
           ]
         },
@@ -1408,37 +1408,37 @@
     "CreateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionWVAeWYn4ECf4WIElm2H90eRuBiDvQupk1tJwON5TWA"
+        "Ref": "CreateUserLambdaVersionmVv6Z1YRTiihXKM5mKSAHrQ2DrZkmNnPXpQX48KbXZM"
       }
     },
     "GetUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserLambdaVersionfAkCneCnve16dNDL48woJWXSM2Z2TQkEQl7UAAbdj0"
+        "Ref": "GetUserLambdaVersionwstbwfWYX7GbmS6YBfxJd7xQE0bYRwxrSBWDex2Mj04"
       }
     },
     "UpdateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUserLambdaVersion6bjerRot34MreGJwuz19uhLr58AH3sQKRm6tPLM"
+        "Ref": "UpdateUserLambdaVersiontye5uifAY4LUzzrHomasRA4YqnQ72TivN9yFIz5jU"
       }
     },
-    "AddCompanyLambdaFunctionQualifiedArn": {
+    "CreateCompanyLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AddCompanyLambdaVersionI77ZgBOqkPx5fjZ9ELdK6szCEIu7QSXm31JQ7vnfI"
+        "Ref": "CreateCompanyLambdaVersionZwAOBlsyg4OX2rCuh88IXsodhj8pLglDVtkt5MrZQw"
       }
     },
     "GetCompanyLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetCompanyLambdaVersion2hG0leSW9EtaCULZHsTJ86mNolWKw9657e29x2k87U"
+        "Ref": "GetCompanyLambdaVersion2erEDfAsiC1oJHXGrk3MomOOm0YFADR1abZwrCjmwMw"
       }
     },
     "LoginUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginUserLambdaVersion1s3fLWzuIQXOVhnjJHfxljS86FvbeZ8WDffr8SKTOSI"
+        "Ref": "LoginUserLambdaVersionKdM8mCBl1uylwTxIfVCER8rlEH0x0d9guuMOncKEA"
       }
     },
     "ServiceEndpoint": {

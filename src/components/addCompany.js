@@ -72,7 +72,7 @@ export class AddCompany extends React.Component {
 
         console.log("data :", data);
         axios({
-            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/addCompany',
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/createCompany',
             method: 'POST',
             data: data,
         }).then((response) => {
