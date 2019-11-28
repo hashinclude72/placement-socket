@@ -5,7 +5,7 @@ export class StudentDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            student: this.props.optionText,
+            student: this.props.student,
         };
         this.updateUser = this.updateUser.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
@@ -13,25 +13,26 @@ export class StudentDetails extends React.Component {
     }
 
     componentDidMount() {
-        document.getElementById('fname').value = this.props.optionText.firstname;
-        document.getElementById('lname').value = this.props.optionText.lastname;
-        document.getElementById('email').value = this.props.optionText.email;
-        document.getElementById('mobile').value = this.props.optionText.mobile;
-        document.getElementById('sapid').value = this.props.optionText.sapid;
-        document.getElementById('rollNo').value = this.props.optionText.rollNo;
-        document.getElementById('sex').value = this.props.optionText.sex;
-        document.getElementById('course').value = this.props.optionText.course;
-        document.getElementById('branch').value = this.props.optionText.branch;
-        document.getElementById('address').value = this.props.optionText.address;
-        document.getElementById('higherSecondaryBoard').value = this.props.optionText.higherSecondaryBoard;
-        document.getElementById('higherSecondaryYear').value = this.props.optionText.higherSecondaryYear;
-        document.getElementById('higherSecondaryPercentage').value = this.props.optionText.higherSecondaryPercentage;
-        document.getElementById('seniorSecondaryBoard').value = this.props.optionText.seniorSecondaryBoard;
-        document.getElementById('seniorSecondaryYear').value = this.props.optionText.seniorSecondaryYear;
-        document.getElementById('seniorSecondaryPercentage').value = this.props.optionText.seniorSecondaryPercentage;
-        document.getElementById('cgpa').value = this.props.optionText.cgpa;
-        document.getElementById('totalBacklogs').value = this.props.optionText.totalBacklogs;
-        document.getElementById('standingBacklogs').value = this.props.optionText.standingBacklogs;
+        document.getElementById('fname').value = this.props.student.firstname;
+        document.getElementById('lname').value = this.props.student.lastname;
+        document.getElementById('email').value = this.props.student.email;
+        document.getElementById('mobile').value = this.props.student.mobile;
+        document.getElementById('sapid').value = this.props.student.sapid;
+        document.getElementById('rollNo').value = this.props.student.rollNo;
+        document.getElementById('sex').value = this.props.student.sex;
+        document.getElementById('course').value = this.props.student.course;
+        document.getElementById('branch').value = this.props.student.branch;
+        document.getElementById('address').value = this.props.student.address;
+        document.getElementById('higherSecondaryBoard').value = this.props.student.higherSecondaryBoard;
+        document.getElementById('higherSecondaryYear').value = this.props.student.higherSecondaryYear;
+        document.getElementById('higherSecondaryPercentage').value = this.props.student.higherSecondaryPercentage;
+        document.getElementById('seniorSecondaryBoard').value = this.props.student.seniorSecondaryBoard;
+        document.getElementById('seniorSecondaryYear').value = this.props.student.seniorSecondaryYear;
+        document.getElementById('seniorSecondaryPercentage').value = this.props.student.seniorSecondaryPercentage;
+        document.getElementById('cgpa').value = this.props.student.cgpa;
+        document.getElementById('totalBacklogs').value = this.props.student.totalBacklogs;
+        document.getElementById('standingBacklogs').value = this.props.student.standingBacklogs;
+        document.getElementById('profileStatus').value = this.props.student.profileStatus;
     }
 
     // componentDidUpdate(prevProps, prevState) {
@@ -45,13 +46,24 @@ export class StudentDetails extends React.Component {
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = false;
         }
+        document.getElementById("sex").disabled = false;
+        document.getElementById("sapid").disabled = true;
+        if(this.props.loggedUserRole==="company"){
+            document.getElementById("profileStatus").disabled = false;
+            document.getElementById("sapid").disabled = false;
+        }
+        
     }
     updateUser() {
+        var profileStatus = "Pending";
+        if(this.props.loggedUserRole==="company"){
+             profileStatus = document.getElementById('profileStatus').value;
+        }
         // var b = document.getElementById('branch');
         // var branch = b.options[b.selectedIndex].text;
         // var c = document.getElementById('course');
         // var course = c.options[c.selectedIndex].text;
-        var id = this.props.optionText.id;
+        var id = this.props.student.id;
         var data = {
             firstname: document.getElementById('fname').value,
             lastname: document.getElementById('lname').value,
@@ -72,6 +84,7 @@ export class StudentDetails extends React.Component {
             cgpa: document.getElementById('cgpa').value,
             totalBacklogs: document.getElementById('totalBacklogs').value,
             standingBacklogs: document.getElementById('standingBacklogs').value,
+            profileStatus: profileStatus,
         }
 
         console.log("update student data :", data);
@@ -119,7 +132,12 @@ export class StudentDetails extends React.Component {
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Sex : </h6>
-                        <input type="text" id="sex" className="form-control pb_height-50 reverse" disabled />
+                        <select className="form-control pb_height-50 reverse" id="sex" disabled>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                        {/* <input type="text" id="sex" className="form-control pb_height-50 reverse" disabled /> */}
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Address : </h6>
@@ -168,6 +186,16 @@ export class StudentDetails extends React.Component {
                     <div className="form-group">
                         <h6 className="text-left">Total Backlogs : </h6>
                         <input type="text" id="totalBacklogs" className="form-control pb_height-50 reverse" disabled />
+                    </div>
+                    <div className="form-group">
+                        <h6 className="text-left">Verify Status : </h6>
+                        <select className="form-control pb_height-50 reverse" id="profileStatus" disabled>
+                            <option>Verified</option>
+                            <option>Pending</option>
+                            <option>Outdated</option>
+                            {/* <option>cat4</option> */}
+                        </select>
+                        {/* <input type="text" id="profileStatus" className="form-control pb_height-50 reverse" disabled /> */}
                     </div>
                     <div className="form-group" id="editUserBtn">
                         <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements} />

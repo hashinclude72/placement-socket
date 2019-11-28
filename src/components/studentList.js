@@ -48,7 +48,7 @@ export class StudentList extends React.Component {
             crossDomain: true,
             responseType: 'json', // important
         }).then((response) => {
-            console.log('fetch_from_dynamo :', response.data)
+            // console.log('fetch_from_dynamo :', response.data)
             return response.data;
 
         });
@@ -67,8 +67,6 @@ export class StudentList extends React.Component {
                 student: student[0]
             };
         });
-        console.log("this.state.student : ", this.state.student[0]);
-        // return 'This option already exists';
     }
 
     closeStudentDetail() {
@@ -88,13 +86,17 @@ export class StudentList extends React.Component {
             { title: 'CGPA', field: 'cgpa' },
             { title: 'Mobile No', field: 'mobile', },
             {
-                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#studentModal" onClick={() => this.handleClicked(rowData.id)}><i class="fas fa-edit"></i></button>,
+                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#studentModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
             },
         ];
 
         return (
             <div>
-                <Table data={this.state.resdata} columns={stuCols} title="Students" handleClicked={this.handleClicked} />
+                <Table 
+                data={this.state.resdata} 
+                columns={stuCols} title="Students" 
+                // handleClicked={this.handleClicked} 
+                />
 
                 {/* <h2 className="mb-4 mt-0 text-center">Student List</h2>
                 {
@@ -110,7 +112,7 @@ export class StudentList extends React.Component {
                                 {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
                             <div className="modal-body">
-                                <StudentDetails key={student.id} optionText={student} />
+                                <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUserRole}/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>

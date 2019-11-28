@@ -14,9 +14,9 @@ export class Login extends React.Component {
     }
 
     login_user() {
-        var password = document.getElementById("pass").value;
+        var password = document.getElementById("loginPassword").value;
         var data = {
-            sapid: document.getElementById("sapid").value,
+            sapid: document.getElementById("loginSapid").value,
             password: password,
         }
         // var element = document.getElementById("loading1");
@@ -72,10 +72,10 @@ export class Login extends React.Component {
 
                 <h3 className="mb-4 mt-0 text-center">Sign In</h3>
                 <div className="form-group">
-                    <input type="text" id="sapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
+                    <input type="text" id="loginSapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
                 </div>
                 <div className="form-group">
-                    <input type="password" id="pass" className="form-control pb_height-50 reverse" placeholder="Password" />
+                    <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;

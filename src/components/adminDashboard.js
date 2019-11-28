@@ -15,8 +15,8 @@ export class AdminDashboard extends React.Component {
     render() {
         return (
             <div>
-                <CompanyList/>
-                <StudentList/>
+                <CompanyList loggedUser={this.props.loggedUser}/>
+                <StudentList loggedUserRole={this.props.loggedUser.role}/>
                 <AddCompany/>
 
                 AdminDashboard

@@ -173,3 +173,65 @@ module.exports.get = (event, context, callback) => {
     }
 };
 
+module.exports.update = (event, context, callback) => {
+    console.error(event.body);
+    const data = JSON.parse(event.body);
+    if (typeof data !== 'object') {
+        console.error('Validation Failed');
+        callback(null, {
+            statusCode: 400,
+            headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
+            body: 'Couldn\'t add the company. Data not sent properly.',
+        });
+        return;
+    }
+    const id = event.pathParameters.id;
+    const params = {
+        TableName: "PlacementSocketCompanies",
+        Key: {
+            id: id,
+        },
+
+        ExpressionAttributeNames: {
+            '#role': 'role',
+        },
+
+        ExpressionAttributeValues: {
+            ":companyName": data.companyName,
+            ":category": data.category,
+            ":jobProfile": data.jobProfile,
+            ":expectedSalary": data.expectedSalary,
+            ":studentsRequired": data.studentsRequired,
+            ":companyVisitingCampus": data.companyVisitingCampus,
+            ":criteriaOf10th": data.criteriaOf10th,
+            ":criteriaOf12th": data.criteriaOf12th,
+            ":collegeCriteria": data.collegeCriteria,
+            ":description": data.description,
+            ":role": "Company",
+        },
+
+        UpdateExpression: "set companyName=:companyName,category=:category,jobProfile=:jobProfile,expectedSalary=:expectedSalary,studentsRequired=:studentsRequired,companyVisitingCampus=:companyVisitingCampus,criteriaOf10th=:criteriaOf10th,criteriaOf12th=:criteriaOf12th,collegeCriteria=:collegeCriteria,description=:description,#role=:role",
+
+        ReturnValues: 'ALL_NEW',
+    };
+
+    dynamoDb.update(params, (error, result) => {
+        if (error) {
+            console.error(error);
+            callback(null, {
+                statusCode: error.statusCode || 501,
+                headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
+                body: 'Couldn\'t update the act. DynamoDb error',
+            });
+            return;
+        }
+
+        const response = {
+            statusCode: 200,
+            body: JSON.stringify(result.Attributes),
+            headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" }
+        };
+        callback(null, response);
+    });
+};
+

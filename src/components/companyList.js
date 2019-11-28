@@ -63,7 +63,7 @@ export class CompanyList extends React.Component {
                 company: company[0]
             };
         });
-        console.log("this.state.company : ",this.state.company[0]);
+        // console.log("this.state.company : ",this.state.company);
         // return 'This option already exists';
     }
 
@@ -78,7 +78,7 @@ export class CompanyList extends React.Component {
                 field: 'expectedSalary',
             },
             {
-                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#companyModal" onClick={() => this.handleClicked(rowData.id)}><i class="fas fa-edit"></i></button>,
+                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#companyModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
             },
         ];
         return (
@@ -98,7 +98,7 @@ export class CompanyList extends React.Component {
                                 <button type="button" className="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div className="modal-body">
-                                <CompanyDetails optionText={company} />
+                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser}/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>

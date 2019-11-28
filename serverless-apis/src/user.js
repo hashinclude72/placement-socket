@@ -42,8 +42,9 @@ module.exports.create = (event, context, callback) => {
             "cgpaStatus": false,
             "totalBacklogs": data.totalBacklogs,
             "standingBacklogs": data.standingBacklogs,
-            "profileStatus": false,
+            "profileStatus": "Pending",
             "role": "student",
+            "password": data.password,
             createdAt: timestamp,
             updatedAt: timestamp
         },
@@ -137,7 +138,7 @@ module.exports.update = (event, context, callback) => {
         callback(null, {
             statusCode: 400,
             headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
-            body: 'Couldn\'t add the act. Data not sent properly.',
+            body: 'Couldn\'t add the user. Data not sent properly.',
         });
         return;
     }
@@ -173,11 +174,11 @@ module.exports.update = (event, context, callback) => {
             ":cgpaStatus": false,
             ":totalBacklogs": data.totalBacklogs,
             ":standingBacklogs": data.standingBacklogs,
-            ":profileStatus": false,
-            ":role": "student",
+            ":profileStatus": data.profileStatus,
+            // ":role": "student",
         },
 
-        UpdateExpression: "set firstname=:firstname,lastname=:lastname,email=:email,mobile=:mobile,sapid=:sapid,rollNo=:rollNo,sex=:sex,course=:course,branch=:branch,address=:address,higherSecondaryBoard=:higherSecondaryBoard,higherSecondaryYear=:higherSecondaryYear,higherSecondaryPercentage=:higherSecondaryPercentage,seniorSecondaryBoard=:seniorSecondaryBoard,seniorSecondaryYear=:seniorSecondaryYear,seniorSecondaryPercentage=:seniorSecondaryPercentage,cgpa=:cgpa,cgpaStatus=:cgpaStatus,totalBacklogs=:totalBacklogs,standingBacklogs=:standingBacklogs,profileStatus=:profileStatus,#role=:role",
+        UpdateExpression: "set firstname=:firstname,lastname=:lastname,email=:email,mobile=:mobile,sapid=:sapid,rollNo=:rollNo,sex=:sex,course=:course,branch=:branch,address=:address,higherSecondaryBoard=:higherSecondaryBoard,higherSecondaryYear=:higherSecondaryYear,higherSecondaryPercentage=:higherSecondaryPercentage,seniorSecondaryBoard=:seniorSecondaryBoard,seniorSecondaryYear=:seniorSecondaryYear,seniorSecondaryPercentage=:seniorSecondaryPercentage,cgpa=:cgpa,cgpaStatus=:cgpaStatus,totalBacklogs=:totalBacklogs,standingBacklogs=:standingBacklogs,profileStatus=:profileStatus",
 
         ReturnValues: 'ALL_NEW',
     };

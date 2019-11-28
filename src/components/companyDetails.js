@@ -5,7 +5,7 @@ export class CompanyDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            student: this.props.optionText,
+            student: this.props.company,
         };
         this.updateCompany = this.updateCompany.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
@@ -13,16 +13,16 @@ export class CompanyDetails extends React.Component {
     }
 
     componentDidMount() {
-        document.getElementById('companyName').value = this.props.optionText.companyName;
-        document.getElementById('category').value = this.props.optionText.category;
-        document.getElementById('jobProfile').value = this.props.optionText.jobProfile;
-        document.getElementById('expectedSalary').value = this.props.optionText.expectedSalary;
-        document.getElementById('studentsRequired').value = this.props.optionText.studentsRequired;
-        document.getElementById('companyVisitingCampus').value = this.props.optionText.companyVisitingCampus;
-        document.getElementById('criteriaOf10th').value = this.props.optionText.criteriaOf10th;
-        document.getElementById('criteriaOf12th').value = this.props.optionText.criteriaOf12th;
-        document.getElementById('collegeCriteria').value = this.props.optionText.collegeCriteria;
-        document.getElementById('description').value = this.props.optionText.description;
+        document.getElementById('companyName').value = this.props.company.companyName;
+        document.getElementById('category').value = this.props.company.category;
+        document.getElementById('jobProfile').value = this.props.company.jobProfile;
+        document.getElementById('expectedSalary').value = this.props.company.expectedSalary;
+        document.getElementById('studentsRequired').value = this.props.company.studentsRequired;
+        document.getElementById('companyVisitingCampus').value = this.props.company.companyVisitingCampus;
+        document.getElementById('criteriaOf10th').value = this.props.company.criteriaOf10th;
+        document.getElementById('criteriaOf12th').value = this.props.company.criteriaOf12th;
+        document.getElementById('collegeCriteria').value = this.props.company.collegeCriteria;
+        document.getElementById('description').value = this.props.company.description;
     }
 
     // componentDidUpdate(prevProps, prevState) {
@@ -37,12 +37,12 @@ export class CompanyDetails extends React.Component {
             inputs[i].disabled = false;
         }
         var textareas = document.getElementsByTagName("textarea");
-        for (var i = 0; i < textareas.length; i++) {
+        for (i = 0; i < textareas.length; i++) {
             textareas[i].disabled = false;
         }
     }
     updateCompany() {
-        var id = this.props.optionText.id;
+        var id = this.props.company.id;
         var data = {
             companyName: document.getElementById('companyName').value,
             category: document.getElementById('category').value,
@@ -58,7 +58,7 @@ export class CompanyDetails extends React.Component {
 
         console.log("update company data :", data);
         axios({
-            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/updateUser/' + id,
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/updateCompany/' + id,
             method: 'POST',
             data: data,
         }).then((response) => {
@@ -76,35 +76,35 @@ export class CompanyDetails extends React.Component {
 
                     <h2 className="mb-4 mt-0 text-center">Company Details</h2>
                     <div className="form-group">
-                        <h6 className="text-left">Company Name : {this.props.optionText.companyName}</h6><input type="text" id="companyName" className="form-control pb_height-50 reverse" value={this.props.optionText.companyName} disabled />
+                        <h6 className="text-left">Company Name : </h6><input type="text" id="companyName" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Category : </h6><input type="text" id="category" className="form-control pb_height-50 reverse" value={this.props.optionText.category} disabled />
+                        <h6 className="text-left">Category : </h6><input type="text" id="category" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Job Profile : </h6><input type="text" id="jobProfile" className="form-control pb_height-50 reverse" value={this.props.optionText.jobProfile} disabled />
+                        <h6 className="text-left">Job Profile : </h6><input type="text" id="jobProfile" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Expected Salary : </h6><input type="text" id="expectedSalary" className="form-control pb_height-50 reverse" value={this.props.optionText.expectedSalary} disabled />
+                        <h6 className="text-left">Expected Salary : </h6><input type="text" id="expectedSalary" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Students Required : </h6><input type="text" id="studentsRequired" className="form-control pb_height-50 reverse" value={this.props.optionText.studentsRequired} disabled />
+                        <h6 className="text-left">Students Required : </h6><input type="text" id="studentsRequired" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Company visiting campus : </h6><input type="text" id="companyVisitingCampus" className="form-control pb_height-50 reverse" value={this.props.optionText.companyVisitingCampus} disabled />
+                        <h6 className="text-left">Company visiting campus : </h6><input type="text" id="companyVisitingCampus" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">10th Passing Criteria : </h6><input type="text" id="criteriaOf10th" className="form-control pb_height-50 reverse" value={this.props.optionText.criteriaOf10th} disabled />
+                        <h6 className="text-left">10th Passing Criteria : </h6><input type="text" id="criteriaOf10th" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">12th passing Criteria : </h6><input type="text" id="criteriaOf12th" className="form-control pb_height-50 reverse" value={this.props.optionText.criteriaOf12th} disabled />
+                        <h6 className="text-left">12th passing Criteria : </h6><input type="text" id="criteriaOf12th" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
-                        <h6 className="text-left">Collage Passing Criteria : </h6><input type="text" id="collegeCriteria" className="form-control pb_height-50 reverse" value={this.props.optionText.collegeCriteria} disabled />
+                        <h6 className="text-left">Collage Passing Criteria : </h6><input type="text" id="collegeCriteria" className="form-control pb_height-50 reverse" disabled />
                     </div>
                     <div className="form-group">
                         <h6 className="text-left">Description : </h6>
-                        <textarea rows="5" type="text" id="description" className="form-control reverse" value={this.props.optionText.description} disabled />
+                        <textarea rows="5" type="text" id="description" className="form-control reverse" disabled />
                     </div>
                     <div className="form-group" id="editCompanyBtn">
                         <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements}/>

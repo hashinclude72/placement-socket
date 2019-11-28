@@ -39,7 +39,7 @@ export class StudentDashboard extends React.Component {
                     <StudentTab key={student.id} optionText={student} handlestudentClicked={this.handlestudentClicked} />
                 }
 
-                <CompanyList />
+                <CompanyList loggedUser={this.props.loggedUser}/>
                 {/* modal */}
                 <div className="modal fade" id="studentModal" role="dialog">
                     <div className="modal-dialog">
@@ -52,7 +52,7 @@ export class StudentDashboard extends React.Component {
                             <div className="modal-body">
                                 {/* ------------- */}
 
-                                {student && <StudentDetails key={student.id} optionText={student} />}
+                                {student && <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUser.role} />}
 
                                 {/* ------------ */}
                             </div>
