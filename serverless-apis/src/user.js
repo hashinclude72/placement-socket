@@ -149,9 +149,9 @@ module.exports.update = (event, context, callback) => {
             id: id,
         },
 
-        ExpressionAttributeNames: {
-            '#role': 'role',
-        },
+        // ExpressionAttributeNames: {
+        //     '#role': 'role',
+        // },
 
         ExpressionAttributeValues: {
             ":firstname": data.firstname,
@@ -189,7 +189,7 @@ module.exports.update = (event, context, callback) => {
             callback(null, {
                 statusCode: error.statusCode || 501,
                 headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
-                body: 'Couldn\'t update the act. DynamoDb error',
+                body: 'Couldn\'t update the act. DynamoDb error update.',
             });
             return;
         }

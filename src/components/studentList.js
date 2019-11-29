@@ -81,13 +81,15 @@ export class StudentList extends React.Component {
     render() {
         const student = this.state.student;
         const stuCols = [
+            {
+                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#studentModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
+            },
             { title: 'Name', field: 'firstname' },
             { title: 'Sap Id', field: 'sapid' },
             { title: 'CGPA', field: 'cgpa' },
             { title: 'Mobile No', field: 'mobile', },
-            {
-                title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#studentModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
-            },
+            { title: 'Status', field: 'profileStatus', },
+            
         ];
 
         return (

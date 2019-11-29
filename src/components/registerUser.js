@@ -145,10 +145,10 @@ export class RegisterUser extends React.Component {
                     <input type="text" id="totalBacklogs" className="form-control pb_height-50 reverse" placeholder="Total backlogs" />
                 </div>
                 <div className="form-group">
-                    <input type="text" id="password1" className="form-control pb_height-50 reverse" placeholder="Password" />
+                    <input type="password" id="password1" className="form-control pb_height-50 reverse" placeholder="Password" />
                 </div>
                 <div className="form-group">
-                    <input type="text" id="password2" className="form-control pb_height-50 reverse" placeholder="Confirm Password" />
+                    <input type="password" id="password2" className="form-control pb_height-50 reverse" placeholder="Confirm Password" />
                 </div>
                 <div className="form-group">
                     <input type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Sign Up" onClick={this.save_to_dynamo} />

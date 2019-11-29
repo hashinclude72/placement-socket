@@ -5,7 +5,7 @@ export class CompanyDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            student: this.props.company,
+            company: this.props.company,
         };
         this.updateCompany = this.updateCompany.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
@@ -13,6 +13,40 @@ export class CompanyDetails extends React.Component {
     }
 
     componentDidMount() {
+        if(this.props.loggedUser.role==="student"){
+            // document.getElementById("editCompanyBtn").style.display = "none";
+            // document.getElementById("registerBtn").style.display = "block";
+            var eligible = true;
+            //10th
+            if (parseFloat(this.props.company.criteriaOf10th) >= parseFloat(this.props.loggedUser.higherSecondaryPercentage)){
+                document.getElementById('criteriaOf10th').classList.add("red-border");
+                eligible = false;
+            }else{
+                document.getElementById('criteriaOf10th').classList.add("green-border");
+            }
+            //12th
+            if (parseFloat(this.props.company.criteriaOf12th) >= parseFloat(this.props.loggedUser.seniorSecondaryPercentage)) {
+                document.getElementById('criteriaOf12th').classList.add("red-border");
+                eligible = false;
+            } else {
+                document.getElementById('criteriaOf12th').classList.add("green-border");
+            }
+            //college
+            if (parseFloat(this.props.company.collegeCriteria) > parseFloat(this.props.loggedUser.cgpa)) {
+                document.getElementById('collegeCriteria').classList.add("red-border");
+                eligible = false;
+            } else {
+                document.getElementById('collegeCriteria').classList.add("green-border");
+            }
+
+            if(!eligible){
+                var registerInpBtn = document.getElementById('registerInpBtn');
+                registerInpBtn.classList.add("btn-danger");
+                registerInpBtn.value = "Not Eligible";
+                registerInpBtn.disabled = true;
+            }
+        }
+
         document.getElementById('companyName').value = this.props.company.companyName;
         document.getElementById('category').value = this.props.company.category;
         document.getElementById('jobProfile').value = this.props.company.jobProfile;
@@ -65,8 +99,12 @@ export class CompanyDetails extends React.Component {
             console.log('resonse_data_dynamo :', response.data);
             // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
-            alert("company updated");
+            alert("Company updated");
         });
+    }
+
+    registerForCompany() {
+
     }
     render() {
         return (
@@ -106,13 +144,23 @@ export class CompanyDetails extends React.Component {
                         <h6 className="text-left">Description : </h6>
                         <textarea rows="5" type="text" id="description" className="form-control reverse" disabled />
                     </div>
-                    <div className="form-group" id="editCompanyBtn">
-                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements}/>
-                    </div>
-                    <div className="form-group" style={{ display: "none" }} id="updateCompanyBtn">
-                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateCompany} />
-                    </div>
 
+                    {this.props.loggedUser.role === "company" ?
+                        <div>
+                            <div className="form-group" id="editCompanyBtn">
+                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements} />
+                            </div>
+                            <div className="form-group" style={{ display: "none" }} id="updateCompanyBtn">
+                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateCompany} />
+                            </div>
+                        </div>
+                        :
+                        <div>
+                            <div className="form-group" style={{ display: "block" }} id="registerBtn">
+                                <input type="button" id="registerInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Register" onClick={this.registerForCompany} />
+                            </div>
+                        </div>
+                    }
                 </div>
 
             </div>
