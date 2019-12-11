@@ -91,6 +91,14 @@ functions:
           method: post
           cors: true
 
+  registerLogs:
+    handler: src/registerLogs.get
+    events:
+      - http:
+          path: getRegisterLogs
+          method: post
+          cors: true
+
 
 resources:
   Resources:
