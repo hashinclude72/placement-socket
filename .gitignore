@@ -60,11 +60,11 @@ service-account-credentials.json
 **/firebase-debug.log
 **/bower_components
 **/*.bak
-.firebaserc
+#.firebaserc
 
 .idea
 **/node_modules/*
-**/.firebaserc
+#**/.firebaserc
 
 ### Firebase Patch ###
 .runtimeconfig.json
