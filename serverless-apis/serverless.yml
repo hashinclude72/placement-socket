@@ -96,7 +96,7 @@ functions:
     events:
       - http:
           path: getRegisterLogs
-          method: post
+          method: get
           cors: true
 
 
