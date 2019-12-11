@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CompanyTab } from "./companyTab";
 import { CompanyDetails } from "./companyDetails";
 import { Table } from "./table";
+var _ = require('underscore');
 
 export class CompanyList extends React.Component {
     constructor(props) {
@@ -15,6 +16,10 @@ export class CompanyList extends React.Component {
 
         };
         this.handleClicked = this.handleClicked.bind(this);
+        this.fetch_all_register_logs = this.fetch_all_register_logs.bind(this);
+        this.fetch_all_Companies = this.fetch_all_Companies.bind(this);
+        this.fetch_from_dynamo_register_logs = this.fetch_from_dynamo_register_logs.bind(this);
+        
 
     }
 
@@ -32,6 +37,33 @@ export class CompanyList extends React.Component {
                 companies.push(item);
             });
             this.setState({ resdata: companies })
+            this.fetch_all_register_logs();
+        })
+    }
+
+    fetch_all_register_logs() {
+        var loggedUserId = this.props.loggedUser.id;
+        //fetch all acts from aws DynamoDb and save it to "resdata"
+
+        this.fetch_from_dynamo_register_logs('all').then(data => {
+            console.log('fetch_all_register_logs :', data);
+            var companies = this.state.resdata;
+
+            var logs = [];
+            data.forEach(function (item) {
+                if (item.studentSapId === loggedUserId){
+                    delete item.id;
+                    logs.push(item);
+                }
+            });
+
+            var mergedList = _.map(companies, function (item) {
+                return _.extend(item, _.findWhere(logs, { companyId: item.id }));
+            });
+
+            console.log("mergedList : ",mergedList);
+            
+            this.setState({ resdata: mergedList })
         })
     }
 
@@ -87,6 +119,9 @@ export class CompanyList extends React.Component {
         const comColumns = [
             {
                 title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#companyModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
+            },
+            {
+                title: 'Register Status', field: 'url', render: rowData => <span>{rowData.registerStatus && <i class="fas fa-check-circle fa-2x text-success"></i>} </span>
             },
             { title: 'Company Name', field: 'companyName' },
             { title: 'Category', field: 'category' },

@@ -83,7 +83,7 @@ functions:
           method: post
           cors: true
 
-  registerLogs:
+  registerForCompany:
     handler: src/registerLogs.create
     events:
       - http:
@@ -91,11 +91,11 @@ functions:
           method: post
           cors: true
 
-  registerLogs:
+  getRegisterLogs:
     handler: src/registerLogs.get
     events:
       - http:
-          path: getRegisterLogs
+          path: getRegisterLogs/{id}
           method: get
           cors: true
 

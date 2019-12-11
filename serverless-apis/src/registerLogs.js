@@ -24,6 +24,7 @@ module.exports.create = (event, context, callback) => {
             id: uuid.v1(),
             "companyId": data.companyId,
             "studentSapId": data.studentSapId,
+            "registerStatus": true,
             createdAt: timestamp,
             updatedAt: timestamp
         },
@@ -66,7 +67,7 @@ module.exports.get = (event, context, callback) => {
         },
     };
 
-    if (companyId.toUpperCase() !== "ALL") {
+    if (registerLogId.toUpperCase() !== "ALL") {
         dynamoDb.get(params, (error, result) => {
             if (error) {
                 console.error(error);
