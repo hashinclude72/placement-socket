@@ -50,6 +50,21 @@ export class CompanyList extends React.Component {
         });
     }
 
+    fetch_from_dynamo_register_logs(id) {
+        //fetches acts from aws. Gets all acts if id == 'all' and one specific act if id == 'id-of-act'
+
+        return axios({
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/getRegisterLogs/' + id,
+            method: 'GET',
+            crossDomain: true,
+            responseType: 'json', // important
+        }).then((response) => {
+            // console.log('fetch_from_dynamo :', response.data)
+            return response.data;
+
+        });
+    }
+
     handleClicked(id){
         // console.log("id list",id);
         var companies = this.state.resdata;

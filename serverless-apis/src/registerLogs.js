@@ -22,8 +22,8 @@ module.exports.create = (event, context, callback) => {
         TableName: "PlacementSocketRegisterLogs",
         Item: {
             id: uuid.v1(),
-            "companyId": data.firstname,
-            "studentSapId": data.lastname,
+            "companyId": data.companyId,
+            "studentSapId": data.studentSapId,
             createdAt: timestamp,
             updatedAt: timestamp
         },

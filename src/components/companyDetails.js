@@ -9,6 +9,7 @@ export class CompanyDetails extends React.Component {
         };
         this.updateCompany = this.updateCompany.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
+        this.registerForCompany = this.registerForCompany.bind(this);
 
     }
 
@@ -101,15 +102,38 @@ export class CompanyDetails extends React.Component {
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
             var updateCompanyInpBtn = document.getElementById('updateCompanyInpBtn');
             updateCompanyInpBtn.classList.add("btn-success");
-            updateCompanyInpBtn.value = "Registered";
+            updateCompanyInpBtn.value = "Updated";
             updateCompanyInpBtn.disabled = true;
             // alert("Company updated");
         });
     }
 
     registerForCompany() {
+        var companyId = this.props.company.id;
+        var studentId = this.props.loggedUser.id;
+        var data = {
+            companyId: companyId,
+            studentSapId: studentId,
+        }
+
+        console.log("update company data :", data);
+        axios({
+            url: 'https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/registerForCompany',
+            method: 'POST',
+            data: data,
+        }).then((response) => {
+            console.log('resonse_data_dynamo :', response.data);
+            // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
+            // document.getElementById('save').classNameName = 'btn btn-success bottomright';
+            var updateCompanyInpBtn = document.getElementById('registerInpBtn');
+            updateCompanyInpBtn.classList.add("btn-success");
+            updateCompanyInpBtn.value = "Registered";
+            updateCompanyInpBtn.disabled = true;
+            // alert("Company updated");
+        });
 
     }
+
     render() {
         return (
             <div className="container">
