@@ -51,3 +51,60 @@ module.exports.create = (event, context, callback) => {
         callback(null, response);
     });
 };
+
+
+module.exports.get = (event, context, callback) => {
+    const registerLogId = event.pathParameters.id;
+    const paramsForScan = {
+        TableName: "PlacementSocketRegisterLogs"
+    };
+
+    const params = {
+        TableName: "PlacementSocketRegisterLogs",
+        Key: {
+            id: registerLogId,
+        },
+    };
+
+    if (companyId.toUpperCase() !== "ALL") {
+        dynamoDb.get(params, (error, result) => {
+            if (error) {
+                console.error(error);
+                callback(null, {
+                    statusCode: error.statusCode || 501,
+                    headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
+                    body: 'Couldn\'t fetch the regiter log, dynamo error72.',
+                });
+                return;
+            }
+
+            const response = {
+                statusCode: 200,
+                body: JSON.stringify(result.Item),
+                headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" }
+            };
+            callback(null, response);
+        });
+    } else {
+
+        dynamoDb.scan(paramsForScan, (error, result) => {
+            if (error) {
+                console.error(error);
+                callback(null, {
+                    statusCode: error.statusCode || 501,
+                    headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" },
+                    body: 'Couldn\'t fetch the register log, dynamo error72.',
+                });
+                return;
+            }
+
+            const response = {
+                statusCode: 200,
+                body: JSON.stringify(result.Items),
+                headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': "*" }
+            };
+            callback(null, response);
+
+        });
+    }
+};
