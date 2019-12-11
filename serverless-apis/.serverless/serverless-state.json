@@ -10,7 +10,6 @@
       "name": "aws",
       "runtime": "nodejs8.10",
       "region": "us-east-1",
-      "profile": "tanmay",
       "environment": {
         "DYNAMODB_TABLE": "PlacementSocketStudents",
         "DYNAMODB_TABLE_COMPANY": "PlacementSocketCompanies"
@@ -222,7 +221,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-createUser",
               "Handler": "src/user.create",
@@ -264,7 +263,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-getUser",
               "Handler": "src/user.get",
@@ -306,7 +305,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-updateUser",
               "Handler": "src/user.update",
@@ -348,7 +347,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-createCompany",
               "Handler": "src/company.create",
@@ -390,7 +389,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-getCompany",
               "Handler": "src/company.get",
@@ -432,7 +431,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-updateCompany",
               "Handler": "src/company.update",
@@ -474,7 +473,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z/placement-socket.zip"
+                "S3Key": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z/placement-socket.zip"
               },
               "FunctionName": "placement-socket-dev-loginUser",
               "Handler": "src/loginUser.login",
@@ -1303,7 +1302,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1575026893308": {
+          "ApiGatewayDeployment1576087700484": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -2094,7 +2093,7 @@
     "artifact": "C:\\Users\\hash-include\\Documents\\Gitkraken\\placement-socket\\serverless-apis\\.serverless\\placement-socket.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/placement-socket/dev/1575026897265-2019-11-29T11:28:17.265Z",
+    "artifactDirectoryName": "serverless/placement-socket/dev/1576087714468-2019-12-11T18:08:34.468Z",
     "artifact": "placement-socket.zip"
   }
 }
