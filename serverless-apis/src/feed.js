@@ -66,7 +66,7 @@ module.exports.get = (event, context, callback) => {
         },
     };
 
-    if (registerLogId.toUpperCase() !== "ALL") {
+    if (feedId.toUpperCase() !== "ALL") {
         dynamoDb.get(params, (error, result) => {
             if (error) {
                 console.error(error);

@@ -100,11 +100,11 @@ functions:
           method: get
           cors: true
 
-  registerFeed:
+  createFeed:
     handler: src/feed.create
     events:
       - http:
-          path: registerFeed
+          path: createFeed
           method: post
           cors: true
 

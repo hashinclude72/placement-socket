@@ -132,6 +132,9 @@ export class CompanyList extends React.Component {
             },
             
         ];
+        if (this.props.loggedUser.role === 'company'){
+            comColumns.splice(1, 1);
+        }
         return (
             <div>
                 <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />

@@ -46,6 +46,13 @@ export class CompanyDetails extends React.Component {
                 registerInpBtn.value = "Not Eligible";
                 registerInpBtn.disabled = true;
             }
+            
+            if (this.props.company.registerStatus){
+                var registerInpBtn = document.getElementById('registerInpBtn');
+                registerInpBtn.classList.add("btn-success");
+                registerInpBtn.value = "Registered";
+                registerInpBtn.disabled = true;
+            }
         }
 
         document.getElementById('companyName').value = this.props.company.companyName;
@@ -125,10 +132,10 @@ export class CompanyDetails extends React.Component {
             console.log('resonse_data_dynamo :', response.data);
             // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
-            var updateCompanyInpBtn = document.getElementById('registerInpBtn');
-            updateCompanyInpBtn.classList.add("btn-success");
-            updateCompanyInpBtn.value = "Registered";
-            updateCompanyInpBtn.disabled = true;
+            var registerInpBtn = document.getElementById('registerInpBtn');
+            registerInpBtn.classList.add("btn-success");
+            registerInpBtn.value = "Registered";
+            registerInpBtn.disabled = true;
             // alert("Company updated");
         });
 
