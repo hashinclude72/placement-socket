@@ -69,3 +69,8 @@ service-account-credentials.json
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
+
+
+
+#serverless
+.serverless
