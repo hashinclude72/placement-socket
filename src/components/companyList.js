@@ -70,16 +70,17 @@ export class CompanyList extends React.Component {
     render() {
         const company = this.state.company;
         const comColumns = [
-            { title: 'Company Name', field: 'companyName' },
-            { title: 'category', field: 'category' },
-            { title: 'jobProfile', field: 'jobProfile' },
-            {
-                title: 'expectedSalary',
-                field: 'expectedSalary',
-            },
             {
                 title: 'Expand', field: 'url', render: rowData => <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#companyModal" onClick={() => this.handleClicked(rowData.id)}><i className="fas fa-edit"></i></button>,
             },
+            { title: 'Company Name', field: 'companyName' },
+            { title: 'Category', field: 'category' },
+            { title: 'Profile', field: 'jobProfile' },
+            {
+                title: 'Salary',
+                field: 'expectedSalary',
+            },
+            
         ];
         return (
             <div>

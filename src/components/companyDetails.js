@@ -99,7 +99,11 @@ export class CompanyDetails extends React.Component {
             console.log('resonse_data_dynamo :', response.data);
             // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
-            alert("Company updated");
+            var updateCompanyInpBtn = document.getElementById('updateCompanyInpBtn');
+            updateCompanyInpBtn.classList.add("btn-success");
+            updateCompanyInpBtn.value = "Registered";
+            updateCompanyInpBtn.disabled = true;
+            // alert("Company updated");
         });
     }
 
@@ -151,7 +155,7 @@ export class CompanyDetails extends React.Component {
                                 <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements} />
                             </div>
                             <div className="form-group" style={{ display: "none" }} id="updateCompanyBtn">
-                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateCompany} />
+                                <input type="button" id="updateCompanyInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateCompany} />
                             </div>
                         </div>
                         :

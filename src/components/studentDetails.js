@@ -96,7 +96,11 @@ export class StudentDetails extends React.Component {
             console.log('resonse_data_dynamo :', response.data);
             // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
-            alert("User updated");
+            var updateUserInpBtn = document.getElementById('updateUserInpBtn');
+            updateUserInpBtn.classList.add("btn-success");
+            updateUserInpBtn.value = "Updated";
+            updateUserInpBtn.disabled = true;
+            // alert("User updated");
         });
     }
     render() {
@@ -202,7 +206,7 @@ export class StudentDetails extends React.Component {
                     </div>
 
                     <div className="form-group" style={{ display: "none" }} id="updateUserBtn">
-                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateUser} />
+                        <input type="button" id="updateUserInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateUser} />
                     </div>
 
                 </div>
