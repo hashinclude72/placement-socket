@@ -57,16 +57,16 @@ export class AddCompany extends React.Component {
 
     save_to_dynamo() {
         var data = {
-            companyName: document.getElementById('companyName').value,
-            category: document.getElementById('category').value,
-            jobProfile: document.getElementById('jobProfile').value,
-            expectedSalary: document.getElementById('expectedSalary').value,
-            studentsRequired: document.getElementById('studentsRequired').value,
-            companyVisitingCampus: document.getElementById('companyVisitingCampus').value,
-            criteriaOf10th: document.getElementById('criteriaOf10th').value,
-            criteriaOf12th: document.getElementById('criteriaOf12th').value,
-            collegeCriteria: document.getElementById('collegeCriteria').value,
-            description: document.getElementById('description').value,
+            companyName: document.getElementById('addcompanyName').value,
+            category: document.getElementById('addcategory').value,
+            jobProfile: document.getElementById('addjobProfile').value,
+            expectedSalary: document.getElementById('addexpectedSalary').value,
+            studentsRequired: document.getElementById('addstudentsRequired').value,
+            companyVisitingCampus: document.getElementById('addcompanyVisitingCampus').value,
+            criteriaOf10th: document.getElementById('addcriteriaOf10th').value,
+            criteriaOf12th: document.getElementById('addcriteriaOf12th').value,
+            collegeCriteria: document.getElementById('addcollegeCriteria').value,
+            description: document.getElementById('adddescription').value,
             encodedPdfList: [this.state.encodedPdf1, this.state.encodedPdf2],
         }
 
@@ -92,34 +92,34 @@ export class AddCompany extends React.Component {
 
                     <h2 className="mb-4 mt-0 text-center">Add Company</h2>
                     <div className="form-group">
-                        <input type="text" id="companyName" className="form-control pb_height-50 reverse" placeholder="Company name" />
+                        <input type="text" id="addcompanyName" className="form-control pb_height-50 reverse" placeholder="Company name" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="category" className="form-control pb_height-50 reverse" placeholder="Category" />
+                        <input type="text" id="addcategory" className="form-control pb_height-50 reverse" placeholder="Category" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="jobProfile" className="form-control pb_height-50 reverse" placeholder="Job profile" />
+                        <input type="text" id="addjobProfile" className="form-control pb_height-50 reverse" placeholder="Job profile" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="expectedSalary" className="form-control pb_height-50 reverse" placeholder="Expected Salary" />
+                        <input type="text" id="addexpectedSalary" className="form-control pb_height-50 reverse" placeholder="Expected Salary" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="studentsRequired" className="form-control pb_height-50 reverse" placeholder="Students Required" />
+                        <input type="text" id="addstudentsRequired" className="form-control pb_height-50 reverse" placeholder="Students Required" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="companyVisitingCampus" className="form-control pb_height-50 reverse" placeholder="Company visiting campus" />
+                        <input type="text" id="addcompanyVisitingCampus" className="form-control pb_height-50 reverse" placeholder="Company visiting campus" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="criteriaOf10th" className="form-control pb_height-50 reverse" placeholder="Criteria of 10th" />
+                        <input type="text" id="addcriteriaOf10th" className="form-control pb_height-50 reverse" placeholder="Criteria of 10th" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="criteriaOf12th" className="form-control pb_height-50 reverse" placeholder="Criteria of 12th" />
+                        <input type="text" id="addcriteriaOf12th" className="form-control pb_height-50 reverse" placeholder="Criteria of 12th" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="collegeCriteria" className="form-control pb_height-50 reverse" placeholder="College criteria" />
+                        <input type="text" id="addcollegeCriteria" className="form-control pb_height-50 reverse" placeholder="College criteria" />
                     </div>
                     <div className="form-group">
-                        <input type="text" id="description" className="form-control pb_height-50 reverse" placeholder="Description" />
+                        <input type="text" id="adddescription" className="form-control pb_height-50 reverse" placeholder="Description" />
                     </div>
 
                     {/* <div id="workflow" TODO:>
