@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-export class Base extends React.Component {
+import { Feed } from "./feed";
+export class Feeds extends React.Component {
     constructor(props) {
         super(props);
 
@@ -12,7 +13,7 @@ export class Base extends React.Component {
     render() {
         return (
             <div>
-
+                <Feed/>
             </div>
         );
     }
