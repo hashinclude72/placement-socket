@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { CompanyTab } from "./companyTab";
 import { CompanyDetails } from "./companyDetails";
 import { Table } from "./table";
 var _ = require('underscore');

@@ -6,13 +6,9 @@ import { RegisterUser } from "./registerUser";
 import { Footer } from "./footer";
 import { Header } from "./header";
 import { Login } from "./login";
-import { AddCompany } from "./addCompany";
-import { CompanyTab } from "./companyTab";
-import { CompanyDetails } from "./companyDetails";
 import { StudentDashboard } from "./studentDashboard";
 import { AdminDashboard } from "./adminDashboard";
-import StudentTable from "./table";
-import MaterialTableDemo from "./tables";
+import {Feeds} from "./feeds";
 
 export class Homepage extends React.Component {
     constructor(props) {
@@ -83,7 +79,7 @@ export class Homepage extends React.Component {
                 {/* <StudentDashboard/> */}
                 {/* <RegisterUser/> */}
                 {/* <CompanyTab/> */}
-                {/* <CompanyList/> */}
+                {/* <Feeds/> */}
                 <Footer />
             </div>
 

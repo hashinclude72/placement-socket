@@ -6,6 +6,7 @@ export class CompanyDetails extends React.Component {
         super(props);
         this.state = {
             company: this.props.company,
+            registerInpBtn: "Register",
         };
         this.updateCompany = this.updateCompany.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
@@ -39,19 +40,27 @@ export class CompanyDetails extends React.Component {
             } else {
                 document.getElementById('collegeCriteria').classList.add("green-border");
             }
-
-            if(!eligible){
-                var registerInpBtn = document.getElementById('registerInpBtn');
-                registerInpBtn.classList.add("btn-danger");
-                registerInpBtn.value = "Not Eligible";
-                registerInpBtn.disabled = true;
-            }
             
             if (this.props.company.registerStatus){
                 var registerInpBtn = document.getElementById('registerInpBtn');
                 registerInpBtn.classList.add("btn-success");
-                registerInpBtn.value = "Registered";
+                // registerInpBtn.value = "Registered";
                 registerInpBtn.disabled = true;
+                this.setState(() => {
+                    return {
+                        registerInpBtn: "Registered",
+                    };
+                });
+            } else if (!eligible) {
+                var registerInpBtn = document.getElementById('registerInpBtn');
+                registerInpBtn.classList.add("btn-danger");
+                // registerInpBtn.value = "Not Eligible";
+                registerInpBtn.disabled = true;
+                this.setState(() => {
+                    return {
+                        registerInpBtn: "Not Eligible",
+                    };
+                });
             }
         }
 
@@ -134,8 +143,13 @@ export class CompanyDetails extends React.Component {
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
             var registerInpBtn = document.getElementById('registerInpBtn');
             registerInpBtn.classList.add("btn-success");
-            registerInpBtn.value = "Registered";
+            // registerInpBtn.value = "Registered";
             registerInpBtn.disabled = true;
+            this.setState(() => {
+                return {
+                    registerInpBtn: "Registered",
+                };
+            });
             // alert("Company updated");
         });
 
@@ -192,7 +206,7 @@ export class CompanyDetails extends React.Component {
                         :
                         <div>
                             <div className="form-group" style={{ display: "block" }} id="registerBtn">
-                                <input type="button" id="registerInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Register" onClick={this.registerForCompany} />
+                                <input type="button" id="registerInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value={this.state.registerInpBtn} onClick={this.registerForCompany} />
                             </div>
                         </div>
                     }

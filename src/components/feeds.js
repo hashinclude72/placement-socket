@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-export class CompanyTab extends React.Component {
+export class Feeds extends React.Component {
     constructor(props) {
         super(props);
 

@@ -8,7 +8,6 @@ import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Homepage } from "./components/homepage";
 import { AddCompany } from "./components/addCompany";
-import { CompanyTab } from "./components/companyTab";
 import { CompanyDetails } from "./components/companyDetails";
 import { CompanyList } from "./components/companyList";
 
