@@ -3,6 +3,7 @@ import axios from 'axios';
 import { StudentTab } from "./studentTab";
 import { StudentDetails } from "./studentDetails";
 import { CompanyList } from "./companyList";
+import { Feeds } from "./feeds";
 
 
 export class StudentDashboard extends React.Component {
@@ -34,6 +35,7 @@ export class StudentDashboard extends React.Component {
 
 
             <div>
+                <Feeds />
                 {/* <h2 className="mb-4 mt-0 text-center">Student List</h2> */}
                 {student &&
                     <StudentTab key={student.id} optionText={student} handlestudentClicked={this.handlestudentClicked} />

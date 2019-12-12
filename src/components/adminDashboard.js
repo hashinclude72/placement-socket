@@ -3,6 +3,7 @@ import axios from 'axios';
 import { AddCompany } from "./addCompany";
 import { CompanyList } from "./companyList";
 import { StudentList } from "./studentList";
+import { Feeds } from "./feeds";
 export class AdminDashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -15,6 +16,7 @@ export class AdminDashboard extends React.Component {
     render() {
         return (
             <div>
+                {/* <Feeds /> */}
                 <CompanyList loggedUser={this.props.loggedUser}/>
                 <StudentList loggedUserRole={this.props.loggedUser.role}/>
                 <AddCompany/>
