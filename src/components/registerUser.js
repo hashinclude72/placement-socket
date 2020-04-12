@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 export class RegisterUser extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,8 @@ export class RegisterUser extends React.Component {
 
     }
     componentDidMount() {
+        var bt = document.getElementById('redirect');
+        bt.disabled = true;
     }
 
     save_to_dynamo() {
@@ -24,6 +27,7 @@ export class RegisterUser extends React.Component {
         var branch = b.options[b.selectedIndex].text;
         var c = document.getElementById('course');
         var course = c.options[c.selectedIndex].text;
+        var bt = document.getElementById('redirect');
 
         var data = {
             firstname: document.getElementById('fname').value,
@@ -55,8 +59,8 @@ export class RegisterUser extends React.Component {
             data: data,
         }).then((response) => {
             console.log('resonse_data_dynamo :', response.data);
-            // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
+            bt.disabled = false;
             alert("User Added");
         });
     }
@@ -152,6 +156,11 @@ export class RegisterUser extends React.Component {
                 </div>
                 <div className="form-group">
                     <input type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Sign Up" onClick={this.save_to_dynamo} />
+                </div>
+                <div className="form-group">
+                    <Link to="/">
+                        <input id="redirect" type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Login" />
+                    </Link>
                 </div>
 
             </div>

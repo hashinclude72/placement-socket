@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import createBrowseHistory from 'history/createBrowserHistory';
 
 import { RegisterUser } from "./registerUser";
 import { Footer } from "./footer";
@@ -61,16 +62,28 @@ export class Homepage extends React.Component {
                 {/* <AddCompany/> */}
 
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-11">
-                            {
-                                !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
-                            }
-                        </div>
-                        <div className="col-md-11 align-self-center">
-                            <Route exact path="/register-user" component={RegisterUser} />
-                        </div>
-                    </div>
+
+                    <Router history={createBrowseHistory()}>                     
+                        <Switch>
+                            <Route exact path="/">
+                                <div className="row">
+                                    <div className="col-md-11">
+                                        {
+                                            !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
+                                        }
+                                    </div>
+                                    {/* <div className="col-md-11 align-self-center">
+                                        <Route exact path="/register-user" component={RegisterUser} />
+                                    </div> */}
+                                </div>
+                            </Route>
+                            <div className="col-md-11 align-self-center">
+                                <Route exact path="/register-user" component={RegisterUser} />
+                            </div>
+                        </Switch>
+                    </Router>
+
+
                 </div>
                 <div className="container">
                     {/* <MaterialTableDemo /> */}
