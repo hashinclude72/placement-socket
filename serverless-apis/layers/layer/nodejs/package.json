@@ -1,0 +1,14 @@
+{
+  "name": "layer",
+  "version": "1.0.0",
+  "description": "layer for aws lambda function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hashinclude72",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^7.0.3"
+  }
+}

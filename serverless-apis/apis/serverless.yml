@@ -35,6 +35,8 @@ functions:
           path: createUser
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   getUser:
     handler: src/user.get
@@ -43,6 +45,8 @@ functions:
           path: getUser/{id}
           method: get
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   updateUser:
     handler: src/user.update
@@ -51,6 +55,8 @@ functions:
           path: updateUser/{id}
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   createCompany:
       handler: src/company.create
@@ -59,6 +65,8 @@ functions:
             path: createCompany
             method: post
             cors: true
+      layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
             
   getCompany:
     handler: src/company.get
@@ -67,6 +75,8 @@ functions:
           path: getCompany/{id}
           method: get
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   updateCompany:
     handler: src/company.update
@@ -75,6 +85,8 @@ functions:
           path: updateCompany/{id}
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   loginUser:
     handler: src/loginUser.login
@@ -83,6 +95,8 @@ functions:
           path: loginUser
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   registerForCompany:
     handler: src/registerLogs.create
@@ -91,6 +105,8 @@ functions:
           path: registerForCompany
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   getRegisterLogs:
     handler: src/registerLogs.get
@@ -99,6 +115,8 @@ functions:
           path: getRegisterLogs/{id}
           method: get
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   createFeed:
     handler: src/feed.create
@@ -107,6 +125,8 @@ functions:
           path: createFeed
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   getFeed:
     handler: src/feed.get
@@ -115,6 +135,8 @@ functions:
           path: getFeed/{id}
           method: get
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
   updateFeeds:
     handler: src/feedsUpdate.update
@@ -123,6 +145,8 @@ functions:
           path: updateFeeds/{id}
           method: post
           cors: true
+    layers:
+      - ${cf:placement-socket-nodejs-layer-dev.PlacementSocketNodejsExport}
 
 
 resources:

@@ -1,0 +1,25 @@
+# slss deploy --aws-profile tanmay
+service: placement-socket-nodejs-layer
+frameworkVersion: ">=1.34.0 <2.0.0"
+provider:
+  name: aws
+  stage: dev
+  region:  us-east-1
+layers:
+  placementsocket:
+    path: "./layer"
+    # name: ${self:provider.stage}-graphene # optional, Deployed Lambda layer name
+    description: placement-socket nodejs packages  # optional, Description to publish to AWS
+    compatibleRuntimes: # optional, a list of runtimes this layer is compatible with
+      - nodejs12.x
+    licenseInfo: GPLv3 # optional, a string specifying license information
+    allowedAccounts: # optional, a list of AWS account IDs allowed to access this layer.
+      - '*'
+    retain: false # optional, false by default. If true, layer versions are not deleted as new ones are created
+resources:
+  Outputs:
+    PlacementSocketNodejsExport:
+        Value:
+          Ref: PlacementsocketLambdaLayer
+        Export:
+          Name: PlacementsocketLambdaLayer
