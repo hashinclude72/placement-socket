@@ -41,7 +41,7 @@ export class StudentDashboard extends React.Component {
                     <StudentTab key={student.id} optionText={student} handlestudentClicked={this.handlestudentClicked} />
                 }
 
-                <Feeds /><br /><br />
+                <Feeds username={student.id} /><br /><br />
 
                 <CompanyList loggedUser={this.props.loggedUser}/>
                 {/* modal */}

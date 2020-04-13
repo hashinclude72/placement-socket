@@ -6,7 +6,7 @@ frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   stage: dev
   region: us-east-1
   #profile: tanmay
@@ -114,6 +114,14 @@ functions:
       - http:
           path: getFeed/{id}
           method: get
+          cors: true
+
+  updateFeeds:
+    handler: src/feedsUpdate.update
+    events:
+      - http:
+          path: updateFeeds/{id}
+          method: post
           cors: true
 
 
