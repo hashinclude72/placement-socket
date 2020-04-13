@@ -35,11 +35,13 @@ export class StudentDashboard extends React.Component {
 
 
             <div>
-                <Feeds />
+                
                 {/* <h2 className="mb-4 mt-0 text-center">Student List</h2> */}
                 {student &&
                     <StudentTab key={student.id} optionText={student} handlestudentClicked={this.handlestudentClicked} />
                 }
+
+                <Feeds /><br /><br />
 
                 <CompanyList loggedUser={this.props.loggedUser}/>
                 {/* modal */}

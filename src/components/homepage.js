@@ -66,8 +66,8 @@ export class Homepage extends React.Component {
                     <Router history={createBrowseHistory()}>                     
                         <Switch>
                             <Route exact path="/">
-                                <div className="row">
-                                    <div className="col-md-11">
+                                <div className="row align-items-center justify-content-center screen_size">
+                                    <div className="col-md-10  align-self-center">
                                         {
                                             !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
                                         }
@@ -77,8 +77,10 @@ export class Homepage extends React.Component {
                                     </div> */}
                                 </div>
                             </Route>
-                            <div className="col-md-11 align-self-center">
-                                <Route exact path="/register-user" component={RegisterUser} />
+                            <div className="row align-items-center justify-content-center screen_size">
+                                <div className="col-md-10 align-self-center">
+                                    <Route exact path="/register-user" component={RegisterUser} />
+                                </div>
                             </div>
                         </Switch>
                     </Router>

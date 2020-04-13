@@ -4,7 +4,7 @@
     <style>
       body {
         background-image: url("./assets/back.jpg");
-        /* opacity: 80%; */
+        opacity: 80%;
         background-repeat: no-repeat;
         background-attachment: fixed;
         overflow: hidden;
@@ -20,6 +20,26 @@
       h2, h3 {
         color: white;
       }
+      @media (min-width: 1200px) {
+        .screen_size {
+          min-height: 750px;
+        }
+      }
+      @media (max-width: 1200px) {
+        .screen_size {
+          min-height: 750px;
+        }
+      }
+      @media (max-width: 800px) {
+        .screen_size {
+          min-height: 750px;
+        }
+      }
+      @media (max-width: 400px) {
+        .screen_size {
+          min-height: 450px;
+        }
+      }  
     </style>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -90,7 +110,6 @@
         </svg>
     </div> -->
     
-
     <script src="assets/js/jquery.min.js"></script>
     
     <script src="assets/js/popper.min.js"></script>

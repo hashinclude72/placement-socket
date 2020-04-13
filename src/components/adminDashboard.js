@@ -19,6 +19,7 @@ export class AdminDashboard extends React.Component {
                 {/* <Feeds /> */}
                 <CompanyList loggedUser={this.props.loggedUser}/>
                 <StudentList loggedUserRole={this.props.loggedUser.role}/>
+                <br />
                 <AddCompany/>
 
                 AdminDashboard
