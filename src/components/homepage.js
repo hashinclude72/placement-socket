@@ -61,7 +61,7 @@ export class Homepage extends React.Component {
                 <Header loggedUser={this.state.loggedUser} />
                 {/* <AddCompany/> */}
 
-                <div className="container">
+                <div className="container" style={{'padding-bottom':'100px'}}>
 
                     <Router history={createBrowseHistory()}>                     
                         <Switch>

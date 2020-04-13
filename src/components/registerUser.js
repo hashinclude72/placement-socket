@@ -12,8 +12,8 @@ export class RegisterUser extends React.Component {
 
     }
     componentDidMount() {
-        var bt = document.getElementById('redirect');
-        bt.disabled = true;
+        // var bt = document.getElementById('redirect');
+        // bt.disabled = true;
     }
 
     save_to_dynamo() {
@@ -27,7 +27,7 @@ export class RegisterUser extends React.Component {
         var branch = b.options[b.selectedIndex].text;
         var c = document.getElementById('course');
         var course = c.options[c.selectedIndex].text;
-        var bt = document.getElementById('redirect');
+        // var bt = document.getElementById('redirect');
 
         var data = {
             firstname: document.getElementById('fname').value,
@@ -60,7 +60,7 @@ export class RegisterUser extends React.Component {
         }).then((response) => {
             console.log('resonse_data_dynamo :', response.data);
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
-            bt.disabled = false;
+            // bt.disabled = false;
             alert("User Added");
         });
     }
