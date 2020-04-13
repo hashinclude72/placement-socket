@@ -66,55 +66,58 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            // <div className="container">
+            <div className="container">
+                <div className="row align-items-center justify-content-center">
+                    <div className="col-md-7 relative align-self-center">
 
-            <div className="col-md-12 relative align-self-center">
-
-                <h3 className="mb-4 mt-0 text-center">Sign In</h3>
-                <div className="form-group">
-                    <input type="text" id="loginSapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
-                </div>
-                <div className="form-group">
-                    <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
-                </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
-                    <div role="status" className="mt-2 float-right" id="loading">
-                            <span className="sr-only">Loading...</span>
+                        <h3 className="mb-4 mt-0 text-center">Sign In</h3>
+                        <div className="form-group">
+                            <input type="text" id="loginSapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
                         </div>
-                    </button>
-                    <br />
-
-                    <Link to="/register-user">
-                        <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Register" />
-                    </Link>
-                    <br />
-                    {/* <div class="text-dark" role="status" id="loading1">
-                        <span class="sr-only">Loading...</span>
+                        <div className="form-group">
+                            <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
+                        </div>
                     </div>
-                    <div class="text-dark" role="status" id="loading2">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div class="text-dark" role="status" id="loading3">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div class="text-dark" role="status" id="loading4">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div class="text-dark" role="status" id="loading5">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div class="text-dark" role="status" id="loading6">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div class="text-dark" role="status" id="loading7">
-                        <span class="sr-only">Loading...</span>
-                    </div> */}
                 </div>
+                <div className="row align-items-center justify-content-center">
+                    <div className="col-md-7 relative align-self-center">
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
+                            <div role="status" className="mt-2 float-right" id="loading">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                            </button>
+                            <br />
 
+                            <Link to="/register-user">
+                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" />
+                            </Link>
+                            <br />
+                            {/* <div class="text-dark" role="status" id="loading1">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading2">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading3">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading4">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading5">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading6">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="text-dark" role="status" id="loading7">
+                                <span class="sr-only">Loading...</span>
+                            </div> */}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            // </div>
         );
     }
 }

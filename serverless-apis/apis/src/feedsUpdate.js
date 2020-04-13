@@ -16,6 +16,7 @@ module.exports.update = (event, context, callback) => {
         return;
     }
     const id = event.pathParameters.id;
+    console.log(data.stu_liked)
     const params = {
         TableName: "PlacementSocketFeeds",
         Key: {
@@ -23,13 +24,12 @@ module.exports.update = (event, context, callback) => {
         },
 
         ExpressionAttributeValues: {
-            ":context": data.firstname,
-            ":likes": data.lastname,
-            ":stu_liked": data.email,
-            ":subject": data.mobile,
+            ":context": data.context,
+            ":stu_liked": data.stu_liked,
+            ":subject": data.subject,
         },
 
-        UpdateExpression: "set context=:context,likes=:likes,stu_liked=:stu_liked,subject=:subject",
+        UpdateExpression: "set context=:context,stu_liked=:stu_liked,subject=:subject",
 
         ReturnValues: 'ALL_NEW',
     };
