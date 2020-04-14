@@ -68,7 +68,7 @@ export class Login extends React.Component {
     render() {
         return (
             
-                <div className="row ">
+            <div className="row align-items-center justify-content-center screen_size">
                    <div className="col-md-8 relative align-self-center">
                    <h3 className="mb-4 mt-0 text-center">Sign In</h3>
                         <div className="form-group">
@@ -78,7 +78,7 @@ export class Login extends React.Component {
                             <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-dark btn-block" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
                             <div role="status" className="mt-2 float-right" id="loading">
                                     <span className="sr-only">Loading...</span>
                                 </div>
@@ -88,7 +88,7 @@ export class Login extends React.Component {
                             <br />
 
                             <Link to="/register-user">
-                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" />
+                                <input type="button" className="btn btn-dark btn-block" value="Register" />
                             </Link>
                             <br />
                             {/* <div class="text-dark" role="status" id="loading1">

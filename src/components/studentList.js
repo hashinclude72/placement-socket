@@ -110,7 +110,7 @@ export class StudentList extends React.Component {
         ];
 
         return (
-            <div>
+            <div className="mt-4 mb-4">
                 <Table 
                 data={this.state.resdata} 
                 columns={stuCols} title="Students" 
