@@ -17,6 +17,7 @@ export class StudentList extends React.Component {
         };
         this.handleClicked = this.handleClicked.bind(this);
         this.closeStudentDetail = this.closeStudentDetail.bind(this);
+        this.handleUpdatedStudent = this.handleUpdatedStudent.bind(this);
 
     }
 
@@ -69,6 +70,22 @@ export class StudentList extends React.Component {
         });
     }
 
+    handleUpdatedStudent(updatedStudent) {
+        var students = this.state.resdata;
+        var student = students.filter(d => d.id === updatedStudent.id);
+        var index = students.indexOf(student);
+
+        if (index !== -1) {
+            students[index] = updatedStudent;
+        }
+
+        this.setState(() => {
+            return {
+                resdata: students,
+            };
+        });
+    }
+
     closeStudentDetail() {
         this.setState(() => {
             return {
@@ -114,7 +131,7 @@ export class StudentList extends React.Component {
                                 {/* <h4 className="modal-title">Modal Header</h4> */}
                             </div>
                             <div className="modal-body">
-                                <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUserRole}/>
+                                <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUserRole} handleUpdatedStudent={this.handleUpdatedStudent} />
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>

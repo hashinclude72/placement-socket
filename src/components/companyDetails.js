@@ -120,6 +120,7 @@ export class CompanyDetails extends React.Component {
             updateCompanyInpBtn.classList.add("btn-success");
             updateCompanyInpBtn.value = "Updated";
             updateCompanyInpBtn.disabled = true;
+            this.props.handleUpdatedCompany(response.data);
             // alert("Company updated");
         });
     }

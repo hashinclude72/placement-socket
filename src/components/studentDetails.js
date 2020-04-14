@@ -100,6 +100,7 @@ export class StudentDetails extends React.Component {
             updateUserInpBtn.classList.add("btn-success");
             updateUserInpBtn.value = "Updated";
             updateUserInpBtn.disabled = true;
+            this.props.handleUpdatedStudent(response.data);
             // alert("User updated");
         });
     }
