@@ -32,7 +32,7 @@ export class Header extends React.Component {
                             <li className="nav-item"><a className="nav-link" href="#section-pricing">Pricing</a></li>
                             <li className="nav-item"><a className="nav-link" href="#section-faq">FAQ</a></li> */}
                             {this.props.loggedUser && <li className="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a className="nav-link" href="#"><i class="fas fa-user"></i>&nbsp;&nbsp;{this.props.loggedUser.id}</a></li>} 
-                            <br />
+                           
                             {this.props.loggedUser && <li className=" nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0 error"><a className="nav-link" href="#" onClick={this.logoutUser}><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a></li>}
                             {/* <li className=" nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0 error"><a className="nav-link" href="#" target="_blank" onClick={this.logoutUser}><span className="pb_rounded-4 px-4 error">Logout</span></a></li> */}
                         </ul>

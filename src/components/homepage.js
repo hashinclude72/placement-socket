@@ -10,6 +10,7 @@ import { Login } from "./login";
 import { StudentDashboard } from "./studentDashboard";
 import { AdminDashboard } from "./adminDashboard";
 import {Feeds} from "./feeds";
+import loginpic from "../login.png"
 
 export class Homepage extends React.Component {
     constructor(props) {
@@ -60,12 +61,17 @@ export class Homepage extends React.Component {
             <div>
                 <Header loggedUser={this.state.loggedUser} />
                 {/* <AddCompany/> */}
-
-                <div className="container" style={{'padding-bottom':'100px'}}>
-
+                <div className="container-fluid left-panel" style= {{'padding-left':'0px'}} >
+                <div className="row">
+                    <div className= "col-4" >
+                <img src = {loginpic} alt = "" style= {{'height': '90vh', 'float': 'left', 'width': '500px', 'position': 'fixed', 'margin-left': '-350px' }} />
+                </div>
+                {/* <div className="container" style={{'padding-bottom':'100px'}}> */}
+                <div className= "col-8">
                     <Router history={createBrowseHistory()}>                     
                         <Switch>
                             <Route exact path="/">
+
                                 <div className="row align-items-center justify-content-center screen_size">
                                     <div className="col-md-10  align-self-center">
                                         {
@@ -86,6 +92,8 @@ export class Homepage extends React.Component {
                     </Router>
 
 
+                </div>
+                </div>
                 </div>
                 <div className="container">
                     {/* <MaterialTableDemo /> */}

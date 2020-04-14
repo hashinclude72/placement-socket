@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+
 export class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -66,27 +67,24 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="row align-items-center justify-content-center">
-                    <div className="col-md-7 relative align-self-center">
-
-                        <h3 className="mb-4 mt-0 text-center">Sign In</h3>
+            
+                <div className="row ">
+                   <div className="col-md-8 relative align-self-center">
+                   <h3 className="mb-4 mt-0 text-center">Sign In</h3>
                         <div className="form-group">
                             <input type="text" id="loginSapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
                         </div>
                         <div className="form-group">
                             <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
                         </div>
-                    </div>
-                </div>
-                <div className="row align-items-center justify-content-center">
-                    <div className="col-md-7 relative align-self-center">
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
                             <div role="status" className="mt-2 float-right" id="loading">
                                     <span className="sr-only">Loading...</span>
                                 </div>
+                                
                             </button>
+                            </div>
                             <br />
 
                             <Link to="/register-user">
@@ -116,8 +114,8 @@ export class Login extends React.Component {
                             </div> */}
                         </div>
                     </div>
-                </div>
-            </div>
+            
+            
         );
     }
 }
