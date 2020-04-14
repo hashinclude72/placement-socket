@@ -68,7 +68,7 @@ export class Login extends React.Component {
     render() {
         return (
             
-                <div className="row ">
+            <div className="row align-items-center justify-content-center screen_size">
                    <div className="col-md-8 relative align-self-center">
                    <h3 className="mb-4 mt-0 text-center">Sign In</h3>
                         <div className="form-group">

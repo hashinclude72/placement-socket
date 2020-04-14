@@ -152,7 +152,7 @@ export class CompanyList extends React.Component {
             comColumns.splice(1, 1);
         }
         return (
-            <div>
+            <div className="mt-4 mb-4">
                 <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
 
                 {/* <h2 className="mb-4 mt-0 text-center">Company List</h2>

@@ -155,11 +155,12 @@ export class RegisterUser extends React.Component {
                     <input type="password" id="password2" className="form-control pb_height-50 reverse" placeholder="Confirm Password" />
                 </div>
                 <div className="form-group">
-                    <input type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Sign Up" onClick={this.save_to_dynamo} />
+                    <input type="submit" className="btn btn-dark btn-block" value="Sign Up" onClick={this.save_to_dynamo} />
                 </div>
+                {/* btn btn-primary btn-lg btn-block pb_btn-pill */}
                 <div className="form-group">
                     <Link to="/">
-                        <input id="redirect" type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Login" />
+                        <input id="redirect" type="button" className="btn btn-dark btn-block" value="Login" />
                     </Link>
                 </div>
 

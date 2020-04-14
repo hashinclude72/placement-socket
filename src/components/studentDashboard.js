@@ -53,7 +53,6 @@ export class StudentDashboard extends React.Component {
                 }
 
                 <Feeds username={student.id} /><br /><br />
-
                 <CompanyList loggedUser={this.props.loggedUser}/>
                 {/* modal */}
                 <div className="modal fade" id="studentModal" role="dialog">

@@ -131,19 +131,18 @@ export class AddCompany extends React.Component {
 
                     <div className="form-group" id="addFile">
                         {/* <input type="button" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" value="Add file" onClick={this.addFile} /> */}
-                        <div>
-                            <input type="file" id="pdf1" className="btn btn-dark btn-sm btn-block pb_btn-pill btn-shadow-blue" onChange={() => this.encodePdf('pdf1')} />
-                            <i id="pdf1ch" className="fas fa-times-circle"></i>
+                        <div className="row ml-0 mr-0 justify-content-center mb-2">
+                            <input type="file" id="pdf1" className="btn btn-dark btn-block" style={{'width': '50%'}} onChange={() => this.encodePdf('pdf1')} />
+                            <i id="pdf1ch" className="fas fa-times-circle upload_icon"></i>
                         </div>
-
-                        <div>
-                            <input type="file" id="pdf2" className="btn btn-dark btn-sm btn-block pb_btn-pill btn-shadow-blue" onChange={() => this.encodePdf('pdf2')} />
-                            <i id="pdf2ch" className="fas fa-times-circle"></i>
+                        <div className="row ml-0 mr-0 justify-content-center">
+                            <input type="file" id="pdf2" className="btn btn-dark btn-block" style={{ 'width': '50%' }} onChange={() => this.encodePdf('pdf2')} />
+                            <i id="pdf2ch" className="fas fa-times-circle upload_icon"></i>
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <input type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Add Company" onClick={this.save_to_dynamo} />
+                        <input type="submit" className="btn btn-dark btn-block" value="Add Company" onClick={this.save_to_dynamo} />
                     </div>
 
 
