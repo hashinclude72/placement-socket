@@ -18,6 +18,7 @@ export class CompanyList extends React.Component {
         this.fetch_all_register_logs = this.fetch_all_register_logs.bind(this);
         this.fetch_all_Companies = this.fetch_all_Companies.bind(this);
         this.fetch_from_dynamo_register_logs = this.fetch_from_dynamo_register_logs.bind(this);
+        this.handleUpdatedCompany = this.handleUpdatedCompany.bind(this);
         
 
     }
@@ -113,6 +114,22 @@ export class CompanyList extends React.Component {
         // return 'This option already exists';
     }
 
+    handleUpdatedCompany(updatedCompany) {
+        var companies = this.state.resdata;
+        var company = companies.filter(d => d.id === updatedCompany.id);
+        var index = companies.indexOf(company);
+
+        if (index !== -1) {
+            companies[index] = updatedCompany;
+        }
+
+        this.setState(() => {
+            return {
+                resdata: companies,
+            };
+        });
+    }
+
     render() {
         const company = this.state.company;
         const comColumns = [
@@ -151,7 +168,7 @@ export class CompanyList extends React.Component {
                                 <button type="button" className="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div className="modal-body">
-                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser}/>
+                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>

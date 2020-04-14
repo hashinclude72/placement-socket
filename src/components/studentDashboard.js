@@ -10,13 +10,24 @@ export class StudentDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            studentDetails: "",
+            studentDetails: this.props.loggedUser,
         };
         this.handlestudentClicked = this.handlestudentClicked.bind(this);
+        this.handleUpdatedStudent = this.handleUpdatedStudent.bind(this);
     }
 
     componentDidMount() {
         console.log("componentDidMount");
+    }
+
+    handleUpdatedStudent(updatedStudent){
+        const json = JSON.stringify(updatedStudent);
+        localStorage.setItem('loggedUser', json);
+        this.setState(() => {
+            return {
+                studentDetails: updatedStudent,
+            };
+        });
     }
 
 
@@ -25,7 +36,7 @@ export class StudentDashboard extends React.Component {
 
     }
     render() {
-        const student = this.props.loggedUser;
+        const student = this.state.studentDetails;
         return (
             // <div>
             //     <StudentTab key={this.state.studentDetails.id} optionText={this.state.studentDetails} handlestudentClicked={this.handlestudentClicked} />
@@ -56,7 +67,7 @@ export class StudentDashboard extends React.Component {
                             <div className="modal-body">
                                 {/* ------------- */}
 
-                                {student && <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUser.role} />}
+                                {student && <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUser.role} handleUpdatedStudent={this.handleUpdatedStudent} />}
 
                                 {/* ------------ */}
                             </div>
