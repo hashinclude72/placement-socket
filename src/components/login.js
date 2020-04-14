@@ -78,17 +78,19 @@ export class Login extends React.Component {
                             <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-outline-primary btn-lg btn-block mt-2" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
                             <div role="status" className="mt-2 float-right" id="loading">
                                     <span className="sr-only">Loading...</span>
                                 </div>
                                 
                             </button>
                             </div>
-                            <br />
+                            
 
                             <Link to="/register-user">
-                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" />
+                                <label><font color="white">Not Registered yet?</font> <a style={{'color':'#007bff'}}>Sign Up!</a>
+                                {/* <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" /> */}
+                                </label>
                             </Link>
                             <br />
                             {/* <div class="text-dark" role="status" id="loading1">
