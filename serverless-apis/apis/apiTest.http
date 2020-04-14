@@ -1,0 +1,23 @@
+# A vscode extention to easily test APIs from IDE only.  
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+###
+POST https://ex663qcrv2.execute-api.us-east-1.amazonaws.com/dev/createCompany
+Accept: application/json
+Content-Type: application/json
+
+{
+    "companyName": "Hackapeeps",
+    "category": "dream",
+    "jobProfile": "QA",
+    "expectedSalary": "7.2",
+    "studentsRequired": "3",
+    "companyVisitingCampus": "Yes",
+    "criteriaOf10th": "60",
+    "criteriaOf12th": "60",
+    "collegeCriteria": "60",
+    "description": "NAh",
+    "encodedPdfList": ["asd"],
+}
+
+###
