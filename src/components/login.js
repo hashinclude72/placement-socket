@@ -81,13 +81,10 @@ export class Login extends React.Component {
                             <button type="submit" className="btn btn-outline-primary btn-lg btn-block mt-2" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
                             <div role="status" className="mt-2 float-right" id="loading">
                                     <span className="sr-only">Loading...</span>
-                                </div>
-                                
+                            </div>      
                             </button>
-                            </div>
-                            
-
-                            <Link to="/register-user">
+                        </div>
+                             <Link to="/register-user">
                                 <label><font color="white">Not Registered yet?</font> <a style={{'color':'#007bff'}}>Sign Up!</a>
                                 {/* <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" /> */}
                                 </label>
@@ -115,9 +112,7 @@ export class Login extends React.Component {
                                 <span class="sr-only">Loading...</span>
                             </div> */}
                         </div>
-                    </div>
-            
-            
+                    </div>   
         );
     }
 }

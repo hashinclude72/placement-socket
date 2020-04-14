@@ -68,6 +68,8 @@ export class Homepage extends React.Component {
                                 <div className="col-9">
                                     <h1><strong>Placement Socket</strong></h1>
                                     <img className='left-panel-img' src={logoPic} alt = "upes_logo" />
+                                    <h4 style= {{'color':'black', 'padding-top':'10px'}}>University Recruiting Platform</h4>
+                                    <p style= {{'opacity':'0.75'}}>Campus Recruitment made easy</p>
                                 </div>
                             </div>
                 {/* <img src = {loginpic} alt = "" style= {{'height': '90vh', 'float': 'left', 'width': '500px', 'position': 'fixed', 'margin-left': '-350px' }} /> */}
