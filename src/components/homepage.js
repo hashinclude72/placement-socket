@@ -122,7 +122,7 @@ export class Homepage extends React.Component {
                 {/* <RegisterUser/> */}
                 {/* <CompanyTab/> */}
                 {/* <Feeds/> */}
-                <Footer />
+                {/* <Footer /> */}
             </div>
 
         );
