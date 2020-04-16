@@ -63,10 +63,13 @@ export class Feeds extends React.Component {
     // }
     render() {
         return (
-            <div>
-                <h2 className="mb-4 mt-0 text-center">Feeds</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Feeds</h5>
+                </div>
+                {/* <h2 className="mb-4 mt-0 text-center">Feeds</h2> */}
                 {
-                  this.state.feeds.map((option) => <Feed key={option.id} feed={option} username={this.props.username} />)
+                    this.state.feeds.map((option) => <Feed key={option.id} feed={option} username={this.props.username} />)
                 }
             </div>
         );

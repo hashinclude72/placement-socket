@@ -44,9 +44,9 @@ export class StudentDashboard extends React.Component {
                 <div className='content'>
                     <div class="row justify-content-center">
                         <div className="col-md-8">
-                            {student &&
+                            {/* {student &&
                                 <StudentTab key={student.id} optionText={student} handlestudentClicked={this.handlestudentClicked} />
-                            }
+                            } */}
                             <Feeds username={student.id} /><br /><br />
                             {/* modal */}
                             <div className="modal fade" id="studentModal" role="dialog">

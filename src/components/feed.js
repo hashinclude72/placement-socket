@@ -59,8 +59,8 @@ export class Feed extends React.Component {
 
     render() {
         return (
-            <div className="row text-left bg-white border border-primary justify-content-center m-2" style={{'line-height': '1'}}>
-                <div className="col-md-11 mt-4 pb-2">
+            <div className="row text-left bg-white border justify-content-center m-2" style={{'line-height': '1'}}>
+                <div className="col-md-11 pb-2">
                     <h4><strong>{this.state.feed_details.subject}&nbsp;&nbsp;</strong></h4>
                     <small class="blockquote-footer">posted a feed,&nbsp;&nbsp;<Moment fromNow>{this.state.feed_details.createdAt}</Moment></small>
                     <h6></h6>
