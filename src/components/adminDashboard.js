@@ -4,6 +4,8 @@ import { AddCompany } from "./addCompany";
 import { CompanyList } from "./companyList";
 import { StudentList } from "./studentList";
 import { Feeds } from "./feeds";
+import { Layout } from "./layout";
+
 export class AdminDashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -11,19 +13,22 @@ export class AdminDashboard extends React.Component {
         this.state = {
 
         };
-
     }
+
     render() {
         return (
-            <div>
-                {/* <Feeds /> */}
-                <CompanyList loggedUser={this.props.loggedUser}/>
-                <StudentList loggedUserRole={this.props.loggedUser.role}/>
-                <br />
-                <AddCompany/>
-
-                AdminDashboard
-            </div>
+            <Layout loggedUser={this.props.loggedUser} history={this.props.history}>
+                <div className='content'>
+                    <div className='row justify-content-center'>
+                        <div className='col-md-8'>
+                            {/* <Feeds /> */}
+                            <StudentList loggedUserRole={this.props.loggedUser.role} />
+                            <br />
+                            <AddCompany />
+                        </div>
+                    </div>
+                </div>
+            </Layout>
         );
     }
 }

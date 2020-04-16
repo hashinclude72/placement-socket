@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { CompanyDetails } from "./companyDetails";
 import { Table } from "./table";
+import { Layout } from './layout';
 var _ = require('underscore');
 
 export class CompanyList extends React.Component {
@@ -11,7 +12,7 @@ export class CompanyList extends React.Component {
         this.state = {
             resdata: [],
             clickId: "",
-            company:"",
+            company: "",
 
         };
         this.handleClicked = this.handleClicked.bind(this);
@@ -19,7 +20,7 @@ export class CompanyList extends React.Component {
         this.fetch_all_Companies = this.fetch_all_Companies.bind(this);
         this.fetch_from_dynamo_register_logs = this.fetch_from_dynamo_register_logs.bind(this);
         this.handleUpdatedCompany = this.handleUpdatedCompany.bind(this);
-        
+
 
     }
 
@@ -51,7 +52,7 @@ export class CompanyList extends React.Component {
 
             var logs = [];
             data.forEach(function (item) {
-                if (item.studentSapId === loggedUserId){
+                if (item.studentSapId === loggedUserId) {
                     delete item.id;
                     logs.push(item);
                 }
@@ -61,8 +62,8 @@ export class CompanyList extends React.Component {
                 return _.extend(item, _.findWhere(logs, { companyId: item.id }));
             });
 
-            console.log("mergedList : ",mergedList);
-            
+            console.log("mergedList : ", mergedList);
+
             this.setState({ resdata: mergedList })
         })
     }
@@ -97,13 +98,13 @@ export class CompanyList extends React.Component {
         });
     }
 
-    handleClicked(id){
+    handleClicked(id) {
         // console.log("id list",id);
         var companies = this.state.resdata;
-        var company = companies.filter(d=>d.id===id);
+        var company = companies.filter(d => d.id === id);
         // console.log(company);
-        
-        
+
+
         this.setState(() => {
             return {
                 clickId: id,
@@ -146,38 +147,41 @@ export class CompanyList extends React.Component {
                 title: 'Salary',
                 field: 'expectedSalary',
             },
-            
+
         ];
-        if (this.props.loggedUser.role === 'company'){
+        if (this.props.loggedUser.role === 'company') {
             comColumns.splice(1, 1);
         }
         return (
-            <div className="mt-4 mb-4">
-                <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
+            <Layout loggedUser={this.props.loggedUser}>
+                <div className='content'>
+                    <div className='row justify-content-center'>
+                        <div className='col-md-8'>
+                            <div className="mt-4 mb-4">
+                                <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
+                                <div className="modal fade" id="companyModal" role="dialog">
+                                    <div className="modal-dialog modal-lg">
 
-                {/* <h2 className="mb-4 mt-0 text-center">Company List</h2>
-                {
-                    this.state.resdata.map((option) => <CompanyTab key={option.id} optionText={option} handleCompanyClicked={this.handleCompanyClicked}/>)
-                } */}
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
 
-                <div className="modal fade" id="companyModal" role="dialog">
-                    <div className="modal-dialog modal-lg">
-
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div className="modal-body">
-                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </Layout>
+
         );
     }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { Layout } from "./layout";
+
 
 
 export class Login extends React.Component {
@@ -67,52 +69,55 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            
-            <div className="row align-items-center justify-content-center screen_size">
-                   <div className="col-md-8 relative align-self-center">
-                   <h3 className="mb-4 mt-0 text-center">Sign In</h3>
-                        <div className="form-group">
-                            <input type="text" id="loginSapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
+            <Layout>
+                <div class="content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="title">Login</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" id="loginSapid" class="form-control" placeholder="Company" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input type="password" id="loginPassword" class="form-control" placeholder="Username" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <button type="submit" className="btn btn-round" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
+                                                    <div role="status" className="float-right" id="loading">
+                                                        <span className="sr-only">Loading...</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <Link to="/register-user">
+                                                    <label><font color="black">Not Registered yet?</font> <a style={{ 'color': '#007bff' }}>Sign Up!</a>
+                                                        {/* <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" /> */}
+                                                    </label>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <input type="password" id="loginPassword" className="form-control pb_height-50 reverse" placeholder="Password" />
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-outline-primary btn-lg btn-block mt-2" value="Login" onClick={this.login_user}>Login&nbsp;&nbsp;
-                            <div role="status" className="mt-2 float-right" id="loading">
-                                    <span className="sr-only">Loading...</span>
-                            </div>      
-                            </button>
-                        </div>
-                             <Link to="/register-user">
-                                <label><font color="white">Not Registered yet?</font> <a style={{'color':'#007bff'}}>Sign Up!</a>
-                                {/* <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill" value="Register" /> */}
-                                </label>
-                            </Link>
-                            <br />
-                            {/* <div class="text-dark" role="status" id="loading1">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading2">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading3">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading4">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading5">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading6">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="text-dark" role="status" id="loading7">
-                                <span class="sr-only">Loading...</span>
-                            </div> */}
-                        </div>
-                    </div>   
+                    </div>
+                </div>
+            </Layout>
         );
     }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { Layout } from "./layout";
+
 export class RegisterUser extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,7 @@ export class RegisterUser extends React.Component {
     save_to_dynamo() {
         var password1 = document.getElementById('password1').value;
         var password2 = document.getElementById('password2').value;
-        if (password1 !== password2){
+        if (password1 !== password2) {
             alert("Passwords don't match.");
             return;
         }
@@ -67,104 +69,106 @@ export class RegisterUser extends React.Component {
     render() {
         return (
             // <div className="container">
+            <Layout>
 
-            <div className="col-md-12 relative align-self-center">
+                <div className="col-md-12 relative align-self-center">
 
-                <h3 className="mb-4 mt-0 text-center">Sign Up</h3>
-                <div className="form-group">
-                    <input type="text" id="fname" className="form-control pb_height-50 reverse" placeholder="First name" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="lname" className="form-control pb_height-50 reverse" placeholder="Last name" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="email" className="form-control pb_height-50 reverse" placeholder="Email" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="mobile" className="form-control pb_height-50 reverse" placeholder="Mobile number" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="sapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="rollno" className="form-control pb_height-50 reverse" placeholder="Roll number" />
-                </div>
-                <div className="form-group">
-                    <select className="form-control pb_height-50 reverse" id="sex">
-                        <option defaultValue>Sex</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                    </select>
-                    {/* <input type="text" id="sex" className="form-control pb_height-50 reverse" placeholder="Sex" /> */}
-                </div>
-                <div className="form-group">
-                    <input type="text" id="address" className="form-control pb_height-50 reverse" placeholder="Address" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="higherSecondaryBoard" className="form-control pb_height-50 reverse" placeholder="10th Board" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="higherSecondaryYear" className="form-control pb_height-50 reverse" placeholder="Passing year" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="higherSecondaryPercentage" className="form-control pb_height-50 reverse" placeholder="10th percentage" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="seniorSecondaryBoard" className="form-control pb_height-50 reverse" placeholder="12th Board" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="seniorSecondaryYear" className="form-control pb_height-50 reverse" placeholder="Passing year" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="seniorSecondaryPercentage" className="form-control pb_height-50 reverse" placeholder="12th percentage" />
-                </div>
-                <div className="form-group">
-                    <div className="pb_select-wrap">
-                        <select id="course" className="form-control pb_height-50 reverse">
-                            <option value="" defaultValue>Course</option>
-                            <option value="">Btech</option>
-                            <option value="">BSC</option>
-                            <option value="">BCA</option>
-                        </select>
+                    <h3 className="mb-4 mt-0 text-center">Sign Up</h3>
+                    <div className="form-group">
+                        <input type="text" id="fname" className="form-control pb_height-50 reverse" placeholder="First name" />
                     </div>
-                </div>
-                <div className="form-group">
-                    <div className="pb_select-wrap">
-                        <select id="branch" className="form-control pb_height-50 reverse">
-                            <option value="" defaultValue>Branch</option>
-                            <option value="">OSOS</option>
-                            <option value="">OGI</option>
-                            <option value="">CSF</option>
-                        </select>
+                    <div className="form-group">
+                        <input type="text" id="lname" className="form-control pb_height-50 reverse" placeholder="Last name" />
                     </div>
-                </div>
-                <div className="form-group">
-                    <input type="text" id="cgpa" className="form-control pb_height-50 reverse" placeholder="Current CGPA" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="standingBacklogs" className="form-control pb_height-50 reverse" placeholder="Standing backlogs" />
-                </div>
-                <div className="form-group">
-                    <input type="text" id="totalBacklogs" className="form-control pb_height-50 reverse" placeholder="Total backlogs" />
-                </div>
-                <div className="form-group">
-                    <input type="password" id="password1" className="form-control pb_height-50 reverse" placeholder="Password" />
-                </div>
-                <div className="form-group">
-                    <input type="password" id="password2" className="form-control pb_height-50 reverse" placeholder="Confirm Password" />
-                </div>
-                <div className="form-group">
-                    <input type="submit" className="btn btn-dark btn-block" value="Sign Up" onClick={this.save_to_dynamo} />
-                </div>
-                {/* btn btn-primary btn-lg btn-block pb_btn-pill */}
-                <div className="form-group">
-                    <Link to="/">
-                        <input id="redirect" type="button" className="btn btn-dark btn-block" value="Login" />
-                    </Link>
-                </div>
+                    <div className="form-group">
+                        <input type="text" id="email" className="form-control pb_height-50 reverse" placeholder="Email" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="mobile" className="form-control pb_height-50 reverse" placeholder="Mobile number" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="sapid" className="form-control pb_height-50 reverse" placeholder="Sap Id" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="rollno" className="form-control pb_height-50 reverse" placeholder="Roll number" />
+                    </div>
+                    <div className="form-group">
+                        <select className="form-control pb_height-50 reverse" id="sex">
+                            <option defaultValue>Sex</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                        {/* <input type="text" id="sex" className="form-control pb_height-50 reverse" placeholder="Sex" /> */}
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="address" className="form-control pb_height-50 reverse" placeholder="Address" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="higherSecondaryBoard" className="form-control pb_height-50 reverse" placeholder="10th Board" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="higherSecondaryYear" className="form-control pb_height-50 reverse" placeholder="Passing year" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="higherSecondaryPercentage" className="form-control pb_height-50 reverse" placeholder="10th percentage" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="seniorSecondaryBoard" className="form-control pb_height-50 reverse" placeholder="12th Board" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="seniorSecondaryYear" className="form-control pb_height-50 reverse" placeholder="Passing year" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="seniorSecondaryPercentage" className="form-control pb_height-50 reverse" placeholder="12th percentage" />
+                    </div>
+                    <div className="form-group">
+                        <div className="pb_select-wrap">
+                            <select id="course" className="form-control pb_height-50 reverse">
+                                <option value="" defaultValue>Course</option>
+                                <option value="">Btech</option>
+                                <option value="">BSC</option>
+                                <option value="">BCA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="pb_select-wrap">
+                            <select id="branch" className="form-control pb_height-50 reverse">
+                                <option value="" defaultValue>Branch</option>
+                                <option value="">OSOS</option>
+                                <option value="">OGI</option>
+                                <option value="">CSF</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="cgpa" className="form-control pb_height-50 reverse" placeholder="Current CGPA" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="standingBacklogs" className="form-control pb_height-50 reverse" placeholder="Standing backlogs" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" id="totalBacklogs" className="form-control pb_height-50 reverse" placeholder="Total backlogs" />
+                    </div>
+                    <div className="form-group">
+                        <input type="password" id="password1" className="form-control pb_height-50 reverse" placeholder="Password" />
+                    </div>
+                    <div className="form-group">
+                        <input type="password" id="password2" className="form-control pb_height-50 reverse" placeholder="Confirm Password" />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" className="btn btn-dark btn-block" value="Sign Up" onClick={this.save_to_dynamo} />
+                    </div>
+                    {/* btn btn-primary btn-lg btn-block pb_btn-pill */}
+                    <div className="form-group">
+                        <Link to="/">
+                            <input id="redirect" type="button" className="btn btn-dark btn-block" value="Login" />
+                        </Link>
+                    </div>
 
-            </div>
+                </div>
+            </Layout>
 
             // </div>
         );

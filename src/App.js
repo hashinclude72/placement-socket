@@ -5,7 +5,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import { RegisterUser } from "./components/registerUser";
 import { Footer } from "./components/footer";
-import { Header } from "./components/header";
 import { Homepage } from "./components/homepage";
 import { AddCompany } from "./components/addCompany";
 import { CompanyDetails } from "./components/companyDetails";
