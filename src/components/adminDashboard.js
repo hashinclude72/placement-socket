@@ -17,7 +17,7 @@ export class AdminDashboard extends React.Component {
 
     render() {
         return (
-            <Layout loggedUser={this.props.loggedUser} history={this.props.history}>
+            <Layout loggedUser={this.props.loggedUser}>
                 <div className='content'>
                     <div className='row justify-content-center'>
                         <div className='col-md-8'>

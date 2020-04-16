@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import createBrowseHistory from 'history/createBrowserHistory';
 
 export class Sidebar extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export class Sidebar extends React.Component {
     logoutUser() {
         console.log("Logout");
         localStorage.removeItem("loggedUser");
-        this.props.history.push('/');
+        var history = createBrowseHistory();
+        history.push('/');
         window.location.reload()
         // localStorage.clear();
     }
@@ -75,12 +77,6 @@ export class Sidebar extends React.Component {
                                         <p>Register</p>
                                     </a>
                                 </Link>
-                            </li>}
-                            {this.props.loggedUser && <li>
-                                <a>
-                                    <i class="now-ui-icons text_caps-small"></i>
-                                    <p>{this.props.loggedUser.id}</p>
-                                </a>
                             </li>}
                             {this.props.loggedUser && <li class="active-pro">
                                 <a onClick={this.logoutUser}>

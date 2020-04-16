@@ -65,7 +65,7 @@ export class Homepage extends React.Component {
                     <Switch>
                         <Route exact path="/">
                             {
-                                !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} history={history} /> : <AdminDashboard loggedUser={this.state.loggedUser} history={history}/>)
+                                !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser}/> : <AdminDashboard loggedUser={this.state.loggedUser}/>)
                             }
                         </Route>
                         {/* <Route path="/companies" component={() => <CompanyList loggedUser={this.state.loggedUser} />} /> */}

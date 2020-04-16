@@ -19,7 +19,7 @@ export class Layout extends React.Component {
             <div>
                 <Sidebar loggedUser={loggedUser} history={this.props.history}/>
                 <div class="main-panel" id="main-panel">
-                    <Navbar loggedUser={loggedUser} />
+                    <Navbar loggedUser={loggedUser} history={this.props.history}/>
                     {this.props.children}
                 </div>
             </div>

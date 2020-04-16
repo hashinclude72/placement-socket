@@ -40,7 +40,7 @@ export class StudentDashboard extends React.Component {
     render() {
         const student = this.state.studentDetails;
         return (
-            <Layout loggedUser={student} history={this.props.history}>
+            <Layout loggedUser={student}>
                 <div className='content'>
                     <div class="row justify-content-center">
                         <div className="col-md-8">
