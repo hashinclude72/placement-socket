@@ -34,26 +34,38 @@ export class Sidebar extends React.Component {
                     </div>
                     <div class="sidebar-wrapper" id="sidebar-wrapper">
                         <ul class="nav">
-                            <li>
+                            {this.props.loggedUser && <li>
                                 <Link to="/">
                                     <a>
                                         <i class="now-ui-icons design_app"></i>
                                         <p>Dashboard</p>
                                     </a>
                                 </Link>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="now-ui-icons education_atom"></i>
-                                    <p>Icons</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="now-ui-icons location_map-big"></i>
-                                    <p>Maps</p>
-                                </a>
-                            </li>
+                            </li>}
+                            {this.props.loggedUser &&
+                                (
+                                    this.props.loggedUser.role === "company" && <li>
+                                        <Link to="/add-company">
+                                            <a>
+                                                <i class="now-ui-icons education_atom"></i>
+                                                <p>Add Company</p>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                )
+                            }
+                            {this.props.loggedUser &&
+                                (
+                                    this.props.loggedUser.role === "company" && <li>
+                                        <Link to="/students">
+                                            <a>
+                                                <i class="now-ui-icons location_map-big"></i>
+                                                <p>Student Details</p>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                )
+                            }
                             {this.props.loggedUser && <li>
                                 <Link to="/companies">
                                     <a>

@@ -21,10 +21,7 @@ export class AdminDashboard extends React.Component {
                 <div className='content'>
                     <div className='row justify-content-center'>
                         <div className='col-md-8'>
-                            {/* <Feeds /> */}
-                            <StudentList loggedUserRole={this.props.loggedUser.role} />
-                            <br />
-                            <AddCompany />
+                            <Feeds username={this.props.loggedUser.id} />
                         </div>
                     </div>
                 </div>

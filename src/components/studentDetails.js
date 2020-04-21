@@ -48,7 +48,7 @@ export class StudentDetails extends React.Component {
         }
         document.getElementById("sex").disabled = false;
         document.getElementById("sapid").disabled = true;
-        if(this.props.loggedUserRole==="company"){
+        if(this.props.loggedUser.role==="company"){
             document.getElementById("profileStatus").disabled = false;
             document.getElementById("sapid").disabled = false;
         }
@@ -56,7 +56,7 @@ export class StudentDetails extends React.Component {
     }
     updateUser() {
         var profileStatus = "Pending";
-        if(this.props.loggedUserRole==="company"){
+        if(this.props.loggedUser.role==="company"){
              profileStatus = document.getElementById('profileStatus').value;
         }
         // var b = document.getElementById('branch');

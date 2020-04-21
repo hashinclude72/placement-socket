@@ -1,17 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import { Router, Switch, Route } from "react-router-dom";
+import { Redirect, Router, Switch, Route } from "react-router-dom";
 import createBrowseHistory from 'history/createBrowserHistory';
 
 import { RegisterUser } from "./registerUser";
-import { Footer } from "./footer";
-import { Sidebar } from "./sidebar";
 import { Login } from "./login";
 import { StudentDashboard } from "./studentDashboard";
 import { AdminDashboard } from "./adminDashboard";
-import { Feeds } from "./feeds";
 import { CompanyList } from "./companyList";
-import logoPic from './Logo_upes.png';
+import { StudentList } from "./studentList";
+import { AddCompany } from "./addCompany";
+
+
 
 export class Homepage extends React.Component {
     constructor(props) {
@@ -62,17 +62,34 @@ export class Homepage extends React.Component {
         return (
             <div class="wrapper">
                 {/* <Router history={history}> */}
-                    <Switch>
-                        <Route exact path="/">
-                            {
-                                !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser}/> : <AdminDashboard loggedUser={this.state.loggedUser}/>)
-                            }
-                        </Route>
-                        {/* <Route path="/companies" component={() => <CompanyList loggedUser={this.state.loggedUser} />} /> */}
-                        <Route path="/register-user" component={RegisterUser} />
-                        <Route path="/companies" render={() => <CompanyList loggedUser={this.state.loggedUser} /> } />
-                            
-                    </Switch>
+                <Switch>
+                    <Route exact path="/">
+                        {
+                            !this.state.loginStatus ? <Login checkLogin={this.checkLogin} /> : (this.state.loggedUser.role === "student" ? <StudentDashboard loggedUser={this.state.loggedUser} /> : <AdminDashboard loggedUser={this.state.loggedUser} />)
+                        }
+                    </Route>
+                    {/* <Route path="/companies" component={() => <CompanyList loggedUser={this.state.loggedUser} />} /> */}
+                    <Route path="/register-user">
+                        {
+                            !this.state.loginStatus ? <RegisterUser /> : <Redirect to='/' />
+                        }
+                    </Route>
+                    <Route path="/companies">
+                        {
+                            this.state.loginStatus ? <CompanyList loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
+                        }
+                    </Route>
+                    <Route path="/students">
+                        {
+                            this.state.loginStatus ? <StudentList loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
+                        }
+                    </Route>
+                    <Route path="/add-company">
+                        {
+                            this.state.loginStatus ? <AddCompany loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
+                        }
+                    </Route>
+                </Switch>
                 {/* </Router> */}
             </div>
 

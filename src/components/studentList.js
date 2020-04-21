@@ -3,6 +3,8 @@ import axios from 'axios';
 import { StudentTab } from "./studentTab";
 import { StudentDetails } from "./studentDetails";
 import { Table } from "./table";
+import { Layout } from "./layout";
+
 
 
 export class StudentList extends React.Component {
@@ -106,41 +108,41 @@ export class StudentList extends React.Component {
             { title: 'CGPA', field: 'cgpa' },
             { title: 'Mobile No', field: 'mobile', },
             { title: 'Status', field: 'profileStatus', },
-            
+
         ];
 
         return (
-            <div className="mt-4 mb-4">
-                <Table 
-                data={this.state.resdata} 
-                columns={stuCols} title="Students" 
-                // handleClicked={this.handleClicked} 
-                />
+            <Layout loggedUser={this.props.loggedUser}>
+                <div className='content'>
+                    <div className='row justify-content-center'>
+                        <div className='col-md-11'>
+                            <Table
+                                data={this.state.resdata}
+                                columns={stuCols} title="Students"
+                            />
+                            <div className="modal fade" id="studentModal" role="dialog">
+                                <div className="modal-dialog modal-lg">
 
-                {/* <h2 className="mb-4 mt-0 text-center">Student List</h2>
-                {
-                    this.state.resdata.map((option) => <StudentTab key={option.id} optionText={option} handlestudentClicked={this.handlestudentClicked} />)
-                }
-                modal */}
-                <div className="modal fade" id="studentModal" role="dialog">
-                    <div className="modal-dialog modal-lg">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                            {/* <h4 className="modal-title">Modal Header</h4> */}
+                                        </div>
+                                        <div className="modal-body">
+                                            <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUser} handleUpdatedStudent={this.handleUpdatedStudent} />
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
+                                        </div>
+                                    </div>
 
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                {/* <h4 className="modal-title">Modal Header</h4> */}
-                            </div>
-                            <div className="modal-body">
-                                <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUserRole} handleUpdatedStudent={this.handleUpdatedStudent} />
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
+
+            </Layout>
         );
     }
 }

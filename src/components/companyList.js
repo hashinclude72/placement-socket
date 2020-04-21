@@ -156,24 +156,20 @@ export class CompanyList extends React.Component {
             <Layout loggedUser={this.props.loggedUser}>
                 <div className='content'>
                     <div className='row justify-content-center'>
-                        <div className='col-md-8'>
-                            <div className="mt-4 mb-4">
-                                <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
-                                <div className="modal fade" id="companyModal" role="dialog">
-                                    <div className="modal-dialog modal-lg">
-
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
+                        <div className='col-md-11'>
+                            <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
+                            <div className="modal fade" id="companyModal" role="dialog">
+                                <div className="modal-dialog modal-lg">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
-
+                                        <div className="modal-body">
+                                            <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

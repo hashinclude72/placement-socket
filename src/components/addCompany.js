@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Layout } from './layout';
+
 export class AddCompany extends React.Component {
     constructor(props) {
         super(props);
@@ -86,69 +88,71 @@ export class AddCompany extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <Layout loggedUser={this.props.loggedUser}>
+                <div class="content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="title">Login</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div className="col-md-12 relative align-self-center">
+                                            <h2 className="mb-4 mt-0 text-center">Add Company</h2>
+                                            <div className="form-group">
+                                                <input type="text" id="addcompanyName" className="form-control" placeholder="Company name" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addcategory" className="form-control" placeholder="Category" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addjobProfile" className="form-control" placeholder="Job profile" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addexpectedSalary" className="form-control" placeholder="Expected Salary" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addstudentsRequired" className="form-control" placeholder="Students Required" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addcompanyVisitingCampus" className="form-control" placeholder="Company visiting campus" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addcriteriaOf10th" className="form-control" placeholder="Criteria of 10th" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addcriteriaOf12th" className="form-control" placeholder="Criteria of 12th" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="addcollegeCriteria" className="form-control" placeholder="College criteria" />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="text" id="adddescription" className="form-control" placeholder="Description" />
+                                            </div>
+                                            <div className="form-group" id="addFile">
+                                                {/* <input type="button" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" value="Add file" onClick={this.addFile} /> */}
+                                                <div className="row ml-0 mr-0 justify-content-center mb-2">
+                                                    <input type="file" id="pdf1" className="btn" style={{ 'width': '50%' }} onChange={() => this.encodePdf('pdf1')} />
+                                                    <i id="pdf1ch" className="fas fa-times-circle upload_icon"></i>
+                                                </div>
+                                                <div className="row ml-0 mr-0 justify-content-center">
+                                                    <input type="file" id="pdf2" className="btn btn-dark btn-block" style={{ 'width': '50%' }} onChange={() => this.encodePdf('pdf2')} />
+                                                    <i id="pdf2ch" className="fas fa-times-circle upload_icon"></i>
+                                                </div>
+                                            </div>
 
-                <div className="col-md-12 relative align-self-center">
-
-                    <h2 className="mb-4 mt-0 text-center">Add Company</h2>
-                    <div className="form-group">
-                        <input type="text" id="addcompanyName" className="form-control pb_height-50 reverse" placeholder="Company name" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addcategory" className="form-control pb_height-50 reverse" placeholder="Category" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addjobProfile" className="form-control pb_height-50 reverse" placeholder="Job profile" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addexpectedSalary" className="form-control pb_height-50 reverse" placeholder="Expected Salary" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addstudentsRequired" className="form-control pb_height-50 reverse" placeholder="Students Required" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addcompanyVisitingCampus" className="form-control pb_height-50 reverse" placeholder="Company visiting campus" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addcriteriaOf10th" className="form-control pb_height-50 reverse" placeholder="Criteria of 10th" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addcriteriaOf12th" className="form-control pb_height-50 reverse" placeholder="Criteria of 12th" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="addcollegeCriteria" className="form-control pb_height-50 reverse" placeholder="College criteria" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" id="adddescription" className="form-control pb_height-50 reverse" placeholder="Description" />
-                    </div>
-
-                    {/* <div id="workflow" TODO:>
-                        <div className="form-group">
-                            <input type="button" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" value="Add workflow level" onClick={this.addWorkflow} />
+                                            <div className="form-group">
+                                                <input type="submit" className="btn btn-dark btn-block" value="Add Company" onClick={this.save_to_dynamo} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                    </div> */}
-
-                    <div className="form-group" id="addFile">
-                        {/* <input type="button" className="btn btn-dark btn-sm btn-block pb_btn-pill  btn-shadow-blue" value="Add file" onClick={this.addFile} /> */}
-                        <div className="row ml-0 mr-0 justify-content-center mb-2">
-                            <input type="file" id="pdf1" className="btn btn-dark btn-block" style={{'width': '50%'}} onChange={() => this.encodePdf('pdf1')} />
-                            <i id="pdf1ch" className="fas fa-times-circle upload_icon"></i>
-                        </div>
-                        <div className="row ml-0 mr-0 justify-content-center">
-                            <input type="file" id="pdf2" className="btn btn-dark btn-block" style={{ 'width': '50%' }} onChange={() => this.encodePdf('pdf2')} />
-                            <i id="pdf2ch" className="fas fa-times-circle upload_icon"></i>
-                        </div>
                     </div>
-
-                    <div className="form-group">
-                        <input type="submit" className="btn btn-dark btn-block" value="Add Company" onClick={this.save_to_dynamo} />
-                    </div>
-
-
                 </div>
-
-            </div>
+            </Layout>
         );
     }
 }
