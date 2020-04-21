@@ -61,7 +61,7 @@ export class Homepage extends React.Component {
         var history = createBrowseHistory();
         return (
             <div class="wrapper">
-                <Router history={history}>
+                {/* <Router history={history}> */}
                     <Switch>
                         <Route exact path="/">
                             {
@@ -70,11 +70,10 @@ export class Homepage extends React.Component {
                         </Route>
                         {/* <Route path="/companies" component={() => <CompanyList loggedUser={this.state.loggedUser} />} /> */}
                         <Route path="/register-user" component={RegisterUser} />
-                        <Route path="/companies">
-                            <CompanyList loggedUser={this.state.loggedUser} />
-                        </Route>
+                        <Route path="/companies" render={() => <CompanyList loggedUser={this.state.loggedUser} /> } />
+                            
                     </Switch>
-                </Router>
+                {/* </Router> */}
             </div>
 
         );
