@@ -34,22 +34,26 @@ export class Navbar extends React.Component {
     render() {
         return (
             <div>
-                <div className="modal fade" id="studentModal" role="dialog">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                {/* <h4 className="modal-title">Modal Header</h4> */}
-                            </div>
-                            <div className="modal-body">
-                                {this.props.loggedUser && <StudentDetails key={this.props.loggedUser.id} student={this.props.loggedUser} loggedUserRole={this.props.loggedUser.role} handleUpdatedStudent={this.handleUpdatedStudent} />}
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
+                {this.props.loggedUser &&
+                    (this.props.loggedUser.role === "student" &&
+                        <div className="modal fade" id="navStudentModal" role="dialog">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                        {/* <h4 className="modal-title">Modal Header</h4> */}
+                                    </div>
+                                    <div className="modal-body">
+                                        {this.props.loggedUser && <StudentDetails key={this.state.studentDetails.id} student={this.state.studentDetails} loggedUser={this.state.studentDetails} handleUpdatedStudent={this.handleUpdatedStudent} />}
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    )
+                }
                 <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
@@ -62,8 +66,8 @@ export class Navbar extends React.Component {
                             </div>
                             {this.props.loggedUser &&
                                 (this.props.loggedUser.role === "student"
-                                    ? <a href="#" data-toggle="modal" data-target="#studentModal" class="navbar-brand">{this.props.loggedUser.firstname} {this.props.loggedUser.lastname} - CGPA: {this.props.loggedUser.cgpa}</a>
-                                    : <a href="#" data-toggle="modal" data-target="#studentModal" class="navbar-brand">Admin Dashboard</a>
+                                    ? <a href="#" data-toggle="modal" data-target="#navStudentModal" class="navbar-brand">{this.props.loggedUser.firstname} {this.props.loggedUser.lastname} - CGPA: {this.props.loggedUser.cgpa}</a>
+                                    : <a class="navbar-brand">Admin Dashboard</a>
                                 )
                             }
                         </div>

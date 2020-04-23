@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import createBrowseHistory from 'history/createBrowserHistory';
 
+
 export class Sidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -53,6 +54,19 @@ export class Sidebar extends React.Component {
                                         </Link>
                                     </li>
                                 )
+                            }
+                            {this.props.loggedUser &&
+                                // (
+                                //     this.props.loggedUser.role === "company" && 
+                                <li>
+                                    <Link to='/room/admin'>
+                                        <a>
+                                            <i class="now-ui-icons education_atom"></i>
+                                            <p>Creat Calling Room</p>
+                                        </a>
+                                    </Link>
+                                </li>
+                                // )
                             }
                             {this.props.loggedUser &&
                                 (

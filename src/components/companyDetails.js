@@ -114,12 +114,25 @@ export class CompanyDetails extends React.Component {
             data: data,
         }).then((response) => {
             console.log('resonse_data_dynamo :', response.data);
+
+            document.getElementById("editCompanyBtn").style.display = "block";
+
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            var description = document.getElementById("description");
+            description.disabled = true;
+            
             // document.getElementById('save').innerHTML = 'Added <span className="fas fa-check-circle"></span>';
             // document.getElementById('save').classNameName = 'btn btn-success bottomright';
+
             var updateCompanyInpBtn = document.getElementById('updateCompanyInpBtn');
             updateCompanyInpBtn.classList.add("btn-success");
-            updateCompanyInpBtn.value = "Updated";
             updateCompanyInpBtn.disabled = true;
+            updateCompanyInpBtn.value = "Updated";
+            var editDetailsButton = document.getElementById("editCompanyInpBtn");
+            editDetailsButton.disabled = false;
             this.props.handleUpdatedCompany(response.data);
             // alert("Company updated");
         });
@@ -146,6 +159,7 @@ export class CompanyDetails extends React.Component {
             registerInpBtn.classList.add("btn-success");
             // registerInpBtn.value = "Registered";
             registerInpBtn.disabled = true;
+            this.props.handleRegisteredCompany(response.data);
             this.setState(() => {
                 return {
                     registerInpBtn: "Registered",
@@ -198,7 +212,7 @@ export class CompanyDetails extends React.Component {
                     {this.props.loggedUser.role === "company" ?
                         <div>
                             <div className="form-group" id="editCompanyBtn">
-                                <input type="button" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements} />
+                                <input type="button" id="editCompanyInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Edit Details" onClick={this.toggleFormElements} />
                             </div>
                             <div className="form-group" style={{ display: "none" }} id="updateCompanyBtn">
                                 <input type="button" id="updateCompanyInpBtn" className="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Update" onClick={this.updateCompany} />
