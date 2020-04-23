@@ -6,6 +6,7 @@ export class StudentDetails extends React.Component {
         super(props);
         this.state = {
             student: this.props.student,
+            loggedUser: this.props.loggedUser,
         };
         this.updateUser = this.updateUser.bind(this);
         this.toggleFormElements = this.toggleFormElements.bind(this);
@@ -48,15 +49,14 @@ export class StudentDetails extends React.Component {
         }
         document.getElementById("sex").disabled = false;
         document.getElementById("sapid").disabled = true;
-        if(this.props.loggedUser.role==="company"){
+        if(this.state.loggedUser.role==="company"){
             document.getElementById("profileStatus").disabled = false;
             document.getElementById("sapid").disabled = false;
         }
-        
     }
     updateUser() {
         var profileStatus = "Pending";
-        if(this.props.loggedUser.role==="company"){
+        if(this.state.loggedUser.role==="company"){
              profileStatus = document.getElementById('profileStatus').value;
         }
         // var b = document.getElementById('branch');

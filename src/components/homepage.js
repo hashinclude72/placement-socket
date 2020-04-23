@@ -10,6 +10,7 @@ import { AdminDashboard } from "./adminDashboard";
 import { CompanyList } from "./companyList";
 import { StudentList } from "./studentList";
 import { AddCompany } from "./addCompany";
+import Room from "./room";
 
 
 
@@ -89,6 +90,7 @@ export class Homepage extends React.Component {
                             this.state.loginStatus ? <AddCompany loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
                         }
                     </Route>
+                    <Route path="/room/:roomID" render={(props) => <Room {...props} loggedUser={this.state.loggedUser} />} />
                 </Switch>
                 {/* </Router> */}
             </div>

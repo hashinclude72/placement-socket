@@ -75,7 +75,7 @@ export class StudentList extends React.Component {
     handleUpdatedStudent(updatedStudent) {
         var students = this.state.resdata;
         var student = students.filter(d => d.id === updatedStudent.id);
-        var index = students.indexOf(student);
+        var index = students.indexOf(student[0]);
 
         if (index !== -1) {
             students[index] = updatedStudent;
@@ -129,7 +129,7 @@ export class StudentList extends React.Component {
                                             {/* <h4 className="modal-title">Modal Header</h4> */}
                                         </div>
                                         <div className="modal-body">
-                                            <StudentDetails key={student.id} student={student} loggedUserRole={this.props.loggedUser} handleUpdatedStudent={this.handleUpdatedStudent} />
+                                            <StudentDetails key={student.id} student={student} loggedUser={this.props.loggedUser} handleUpdatedStudent={this.handleUpdatedStudent} />
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeStudentDetail}>Close</button>

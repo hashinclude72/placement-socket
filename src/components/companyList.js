@@ -20,8 +20,7 @@ export class CompanyList extends React.Component {
         this.fetch_all_Companies = this.fetch_all_Companies.bind(this);
         this.fetch_from_dynamo_register_logs = this.fetch_from_dynamo_register_logs.bind(this);
         this.handleUpdatedCompany = this.handleUpdatedCompany.bind(this);
-
-
+        this.handleRegisteredCompany = this.handleRegisteredCompany.bind(this);
     }
 
     componentDidMount() {
@@ -63,7 +62,6 @@ export class CompanyList extends React.Component {
             });
 
             console.log("mergedList : ", mergedList);
-
             this.setState({ resdata: mergedList })
         })
     }
@@ -118,7 +116,7 @@ export class CompanyList extends React.Component {
     handleUpdatedCompany(updatedCompany) {
         var companies = this.state.resdata;
         var company = companies.filter(d => d.id === updatedCompany.id);
-        var index = companies.indexOf(company);
+        var index = companies.indexOf(company[0]);
 
         if (index !== -1) {
             companies[index] = updatedCompany;
@@ -129,6 +127,17 @@ export class CompanyList extends React.Component {
                 resdata: companies,
             };
         });
+    }
+
+    handleRegisteredCompany(registeredCompany) {
+        
+        delete registeredCompany.id;
+        var log = [registeredCompany];
+        var companies = this.state.resdata;
+        var mergedList = _.map(companies, function (item) {
+            return _.extend(item, _.findWhere(log, { companyId: item.id }));
+        });
+        this.setState({ resdata: mergedList })
     }
 
     render() {
@@ -157,7 +166,7 @@ export class CompanyList extends React.Component {
                 <div className='content'>
                     <div className='row justify-content-center'>
                         <div className='col-md-11'>
-                            <Table data={this.state.resdata} columns={comColumns} title="Companies" handleClicked={this.handleClicked} />
+                            <Table data={this.state.resdata} columns={comColumns} title="Companies"/>
                             <div className="modal fade" id="companyModal" role="dialog">
                                 <div className="modal-dialog modal-lg">
                                     <div className="modal-content">
@@ -165,7 +174,7 @@ export class CompanyList extends React.Component {
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body">
-                                            <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} />
+                                            <CompanyDetails key={company.id} company={company} loggedUser={this.props.loggedUser} handleUpdatedCompany={this.handleUpdatedCompany} handleRegisteredCompany={this.handleRegisteredCompany}/>
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
