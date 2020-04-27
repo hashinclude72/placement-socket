@@ -38,7 +38,7 @@ const Room = (props) => {
     const roomID = props.match.params.roomID;
 
     useEffect(() => {
-        socketRef.current = io.connect("/");
+        socketRef.current = io.connect("https://43e9c7ab.ngrok.io");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: false }).then(stream => {
             userVideo.current.srcObject = stream;
             socketRef.current.emit("join room", roomID);
