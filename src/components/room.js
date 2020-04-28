@@ -69,6 +69,19 @@ const Room = (props) => {
                 const item = peersRef.current.find(p => p.peerID === payload.id);
                 item.peer.signal(payload.signal);
             });
+
+            // socketRef.current.on("user disconnect", users => {
+            //     var removed_peer = []
+            //     peers.forEach(peer => {
+            //         if(!users.includes(peer.userID)){
+            //             removed_peer.push(peer)
+            //         }
+            //     })
+            //     removed_peer.forEach(peer => {
+            //         peers.remove(peer)
+            //     })
+            //     setPeers(peers);
+            // });
         })
     }, []);
 
@@ -78,6 +91,7 @@ const Room = (props) => {
             trickle: false,
             stream,
         });
+        peer['userID'] = userToSignal;
 
         peer.on("signal", signal => {
             socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
