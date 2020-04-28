@@ -108,12 +108,12 @@ const Room = (props) => {
                 <div className="card" style={{ 'height': '100vh' }}>
                     <div className="row m-2">
                         <div className="col-md-6 p-0 pt-0 pb-0" style={{ 'border': '2px solid black', 'background-color': 'black' }}>
-                                <StyledVideo ref={userVideo} autoPlay playsInline />
+                                <StyledVideo muted ref={userVideo} autoPlay playsInline />
                             </div>
                         {peers.map((peer, index) => {
                             return (
                                 <div className="col-md-6 p-0 pt-0 pb-0" style={{ 'border': '2px solid black', 'background-color': 'black'}}>
-                                    <Video key={index} peer={peer} />
+                                    <Video muted key={index} peer={peer} />
                                 </div>
                             );
                         })}
