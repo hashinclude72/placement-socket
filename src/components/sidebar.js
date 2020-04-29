@@ -59,7 +59,7 @@ export class Sidebar extends React.Component {
                                 // (
                                 //     this.props.loggedUser.role === "company" && 
                                 <li>
-                                    <Link to='/room/admin'>
+                                <Link to='video-calling'>
                                         <a>
                                             <i class="now-ui-icons education_atom"></i>
                                             <p>Creat Calling Room</p>

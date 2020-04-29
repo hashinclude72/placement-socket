@@ -10,6 +10,7 @@ import { AdminDashboard } from "./adminDashboard";
 import { CompanyList } from "./companyList";
 import { StudentList } from "./studentList";
 import { AddCompany } from "./addCompany";
+import { VideoCalling } from "./room";
 import Room from "./room";
 
 
@@ -90,7 +91,17 @@ export class Homepage extends React.Component {
                             this.state.loginStatus ? <AddCompany loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
                         }
                     </Route>
-                    <Route path="/room/:roomID" render={(props) => <Room {...props} loggedUser={this.state.loggedUser} />} />
+                    <Route path="/video-calling">
+                        {
+                            this.state.loginStatus ? <VideoCalling loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
+                        }
+                    </Route>
+                    {/* <Route path="/room/:roomID">
+                        {
+                            this.state.loginStatus ? <Room loggedUser={this.state.loggedUser} /> : <Redirect to='/' />
+                        }
+                    </Route> */}
+                    <Route path="/room/:roomID" render={(props) => this.state.loginStatus ? <Room {...props} loggedUser={this.state.loggedUser} /> : <Redirect to='/' />} />
                 </Switch>
                 {/* </Router> */}
             </div>

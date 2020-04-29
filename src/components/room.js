@@ -3,6 +3,102 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
 import { Layout } from "./layout";
+import { Link } from "react-router-dom";
+
+
+
+
+export class VideoCalling extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            path: '',
+        };
+        this.room_id = this.room_id.bind(this);
+        this.change = this.change.bind(this);
+    }
+
+    room_id() {
+        var roomid = document.getElementById("roomid").value;
+        var path = '/room/' + roomid;
+        if (roomid) {
+            document.getElementById('submit').disabled = true;
+            // document.getElementById('create').disabled = false;
+            document.getElementById('join').disabled = false;
+            this.setState(() => {
+                return {
+                    path: path,
+                };
+            });
+        }
+    }
+
+    // create() {
+    // }
+
+    change() {
+        document.getElementById('submit').disabled = false;
+        // document.getElementById('create').disabled = true;
+        document.getElementById('join').disabled = true;
+    }
+
+
+
+    render() {
+        return (
+            <Layout loggedUser={this.props.loggedUser}>
+                <div class="content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="title">Create or Join Room</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <label>Room ID</label>
+                                                <input type="text" id="roomid" class="form-control" placeholder="Room ID" onChange={this.change} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <button type="button" id='submit' className="btn btn-round" onClick={this.room_id}>Submit
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        {/* <div class="col-md-3 pr-1">
+                                            <div class="form-group">
+                                                <button type="button" id='create' className="btn btn-round" onClick={this.create} disabled>Create
+                                                        </button>
+                                            </div>
+                                        </div> */}
+                                        <div class="col-md-8 pr-1">
+                                            <div class="form-group">
+                                                <Link to={this.state.path}>
+                                                    <button type="button" id='join' className="btn btn-round" disabled>Join
+                                                    </button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Layout>
+        );
+    }
+}
+
+
 
 
 const StyledVideo = styled.video`
@@ -38,7 +134,8 @@ const Room = (props) => {
     const roomID = props.match.params.roomID;
 
     useEffect(() => {
-        socketRef.current = io.connect("/");
+        socketRef.current = io.connect("https://placement-socket-server.herokuapp.com/");
+        // socketRef.current = io.connect("http://localhost:8000/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
             socketRef.current.emit("join room", roomID);
@@ -82,7 +179,12 @@ const Room = (props) => {
             //     })
             //     setPeers(peers);
             // });
+
+            
         })
+
+        return () => { window.location.reload() };
+
     }, []);
 
     function createPeer(userToSignal, callerID, stream) {
@@ -122,11 +224,11 @@ const Room = (props) => {
                 <div className="card" style={{ 'height': '100vh' }}>
                     <div className="row m-2">
                         <div className="col-md-6 p-0 pt-0 pb-0" style={{ 'border': '2px solid black', 'background-color': 'black' }}>
-                                <StyledVideo muted ref={userVideo} autoPlay playsInline />
-                            </div>
+                            <StyledVideo muted ref={userVideo} autoPlay playsInline />
+                        </div>
                         {peers.map((peer, index) => {
                             return (
-                                <div className="col-md-6 p-0 pt-0 pb-0" style={{ 'border': '2px solid black', 'background-color': 'black'}}>
+                                <div className="col-md-6 p-0 pt-0 pb-0" style={{ 'border': '2px solid black', 'background-color': 'black' }}>
                                     <Video muted key={index} peer={peer} />
                                 </div>
                             );
