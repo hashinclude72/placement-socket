@@ -82,14 +82,14 @@ export class Login extends React.Component {
                                     <div class="row justify-content-center">
                                         <div class="col-md-8 pr-1">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" id="loginSapid" class="form-control" placeholder="Company" />
+                                                {/* <label>Username</label> */}
+                                                <input type="text" id="loginSapid" class="form-control" placeholder="Username" />
                                             </div>
                                         </div>
                                         <div class="col-md-8 pr-1">
                                             <div class="form-group">
-                                                <label>Password</label>
-                                                <input type="password" id="loginPassword" class="form-control" placeholder="Username" />
+                                                {/* <label>Password</label> */}
+                                                <input type="password" id="loginPassword" class="form-control" placeholder="Password" />
                                             </div>
                                         </div>
                                     </div>

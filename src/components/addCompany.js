@@ -93,9 +93,9 @@ export class AddCompany extends React.Component {
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header">
+                                {/* <div class="card-header">
                                     <h5 class="title">Login</h5>
-                                </div>
+                                </div> */}
                                 <div class="card-body">
                                     <div class="row justify-content-center">
                                         <div className="col-md-12 relative align-self-center">

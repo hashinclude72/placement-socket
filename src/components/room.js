@@ -67,7 +67,7 @@ export class VideoCalling extends React.Component {
                                     <div class="row justify-content-center">
                                         <div className="col-md-3 relative align-self-center">
                                             <div class="form-group">
-                                                <button type="button" id='submit' className="btn btn-dark btn-block" onClick={this.room_id}>Submit
+                                                <button type="button" id='submit' className="btn btn-dark btn-block" onClick={this.room_id}>Create
                                                     </button>
                                             </div>
                                             {/* <div class="col-md-3 pr-1">
@@ -77,10 +77,11 @@ export class VideoCalling extends React.Component {
                                             </div>
                                         </div> */}
                                             <div class="form-group">
-                                                <Link to={this.state.path} style={{ 'text-decoration': 'none' }}>
-                                                    <button type="button" id='join' className="btn btn-dark btn-block" disabled>Join
+                                                    <button type="button" id='join' className="btn btn-dark btn-block" disabled>
+                                                        <Link to={this.state.path} style={{ 'text-decoration': 'none' }}>
+                                                                Join
+                                                        </Link>
                                                     </button>
-                                                </Link>
                                             </div>
                                         </div>
                                     </div>
