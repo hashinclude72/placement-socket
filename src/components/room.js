@@ -65,24 +65,20 @@ export class VideoCalling extends React.Component {
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-md-8 pr-1">
+                                        <div className="col-md-3 relative align-self-center">
                                             <div class="form-group">
-                                                <button type="button" id='submit' className="btn btn-round" onClick={this.room_id}>Submit
+                                                <button type="button" id='submit' className="btn btn-dark btn-block" onClick={this.room_id}>Submit
                                                     </button>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        {/* <div class="col-md-3 pr-1">
+                                            {/* <div class="col-md-3 pr-1">
                                             <div class="form-group">
-                                                <button type="button" id='create' className="btn btn-round" onClick={this.create} disabled>Create
+                                                <button type="button" id='create' className="btn btn-dark btn-block" onClick={this.create} disabled>Create
                                                         </button>
                                             </div>
                                         </div> */}
-                                        <div class="col-md-8 pr-1">
                                             <div class="form-group">
                                                 <Link to={this.state.path}>
-                                                    <button type="button" id='join' className="btn btn-round" disabled>Join
+                                                    <button type="button" id='join' className="btn btn-dark btn-block" disabled>Join
                                                     </button>
                                                 </Link>
                                             </div>
@@ -180,7 +176,7 @@ const Room = (props) => {
             //     setPeers(peers);
             // });
 
-            
+
         })
 
         return () => { window.location.reload() };
