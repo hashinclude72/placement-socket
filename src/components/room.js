@@ -77,11 +77,10 @@ export class VideoCalling extends React.Component {
                                             </div>
                                         </div> */}
                                             <div class="form-group">
-                                                    <button type="button" id='join' className="btn btn-dark btn-block" disabled>
-                                                        <Link to={this.state.path} style={{ 'text-decoration': 'none' }}>
-                                                                Join
-                                                        </Link>
+                                                <Link to={this.state.path} style={{ 'text-decoration': 'none' }}>
+                                                    <button type="button" id='join' className="btn btn-dark btn-block" disabled>Join
                                                     </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
